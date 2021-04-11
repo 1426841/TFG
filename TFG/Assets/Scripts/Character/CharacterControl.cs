@@ -2,19 +2,21 @@
 
 public class CharacterControl : MonoBehaviour
 {
+    private Controller controller;
     private Character character;
     private string action;
 
     void Start()
     {
+        controller = new Controller();
         character = GetComponent<Character>();
     }
 
     void FixedUpdate()
     {
-        if (Input.GetKey("right"))
+        if (Input.GetKey(controller.GetRight()))
         {
-            action = "moveRight";
+            action = Character.MoveRight;
         }
         character.SetAction(action);
     }

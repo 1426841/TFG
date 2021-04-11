@@ -17,7 +17,7 @@ namespace Tests
 
             yield return null;
 
-            character.SetAction("moveRight");
+            character.SetAction(Character.MoveRight);
             
             yield return new WaitForSeconds(1);
 

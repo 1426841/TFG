@@ -3,6 +3,8 @@
 public class Character :  MonoBehaviour
 {
     private const float Speed = 7;
+    public const string MoveRight = "moveRight";
+
     private Rigidbody2D rigidBody;
     private string action;
 
@@ -18,7 +20,7 @@ public class Character :  MonoBehaviour
 
     void FixedUpdate()
     {
-        if (action== "moveRight")
+        if (action == MoveRight)
         {
             rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
         }
