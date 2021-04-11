@@ -13,6 +13,7 @@ public class Character :  MonoBehaviour
     public void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        action = NoMove;
     }
 
     public void SetAction(string action)
