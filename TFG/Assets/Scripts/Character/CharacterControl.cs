@@ -18,6 +18,10 @@ public class CharacterControl : MonoBehaviour
         {
             action = Character.MoveRight;
         }
+        else if (Input.GetKey("left"))
+        {
+            action = Character.MoveLeft;
+        }
         character.SetAction(action);
     }
 }
