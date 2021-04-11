@@ -57,5 +57,22 @@ namespace Tests
 
             Assert.AreEqual(character.transform.position.x, originalPosition);
         }
+
+        [UnityTest]
+        public IEnumerator WrongAction()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            float originalPosition = character.transform.position.x;
+
+            yield return null;
+
+            character.SetAction("wrongAction");
+
+            yield return new WaitForSeconds(1);
+
+            LogAssert.Expect(LogType.Warning, "Wrong character action!");
+        }
     }
 }

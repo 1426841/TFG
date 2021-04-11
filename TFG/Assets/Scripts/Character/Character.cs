@@ -2,10 +2,10 @@
 
 public class Character :  MonoBehaviour
 {
-    private const float Speed = 7;
     public const string MoveRight = "moveRight";
     public const string MoveLeft = "moveLeft";
     public const string NoMove = "noMove";
+    private const float Speed = 7;
 
     private Rigidbody2D rigidBody;
     private string action;
@@ -32,6 +32,9 @@ public class Character :  MonoBehaviour
                 break;
             case NoMove:
                 rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                break;
+            default:
+                Debug.LogWarning("Wrong character action!");
                 break;
         }
     }
