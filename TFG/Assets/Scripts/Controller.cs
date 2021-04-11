@@ -2,6 +2,7 @@
 {
     private string left = "left";
     private string right = "right";
+    private string jump = "space";
 
     //Getters
     public string GetLeft()
@@ -14,6 +15,11 @@
         return right;
     }
 
+    public string GetJump()
+    {
+        return jump;
+    }
+
     //Setters
     public void SetLeft(string left)
     {
@@ -23,5 +29,10 @@
     public void SetRight(string right)
     {
         this.right = right;
+    }
+
+    public void SetJump(string jump)
+    {
+        this.jump = jump;
     }
 }
