@@ -22,6 +22,11 @@ public class CharacterControl : MonoBehaviour
         {
             action = Character.MoveLeft;
         }
+        else
+        {
+            action = Character.NoMove;
+        }
+
         character.SetAction(action);
     }
 }

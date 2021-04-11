@@ -40,5 +40,22 @@ namespace Tests
 
             Assert.Less(character.transform.position.x, originalPosition);
         }
+
+        [UnityTest]
+        public IEnumerator NoMove()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            float originalPosition = character.transform.position.x;
+
+            yield return null;
+
+            character.SetAction(Character.NoMove);
+
+            yield return new WaitForSeconds(1);
+
+            Assert.AreEqual(character.transform.position.x, originalPosition);
+        }
     }
 }

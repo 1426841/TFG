@@ -5,6 +5,7 @@ public class Character :  MonoBehaviour
     private const float Speed = 7;
     public const string MoveRight = "moveRight";
     public const string MoveLeft = "moveLeft";
+    public const string NoMove = "noMove";
 
     private Rigidbody2D rigidBody;
     private string action;
@@ -28,6 +29,10 @@ public class Character :  MonoBehaviour
         else if (action == MoveLeft)
         {
             rigidBody.velocity = new Vector2(-Speed, rigidBody.velocity.y);
+        }
+        else if (action == NoMove)
+        {
+            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         }
     }
 }
