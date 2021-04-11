@@ -22,17 +22,17 @@ public class Character :  MonoBehaviour
 
     void FixedUpdate()
     {
-        if (action == MoveRight)
+        switch (action)
         {
-            rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
-        }
-        else if (action == MoveLeft)
-        {
-            rigidBody.velocity = new Vector2(-Speed, rigidBody.velocity.y);
-        }
-        else if (action == NoMove)
-        {
-            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+            case MoveRight:
+                rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
+                break;
+            case MoveLeft:
+                rigidBody.velocity = new Vector2(-Speed, rigidBody.velocity.y);
+                break;
+            case NoMove:
+                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                break;
         }
     }
 }
