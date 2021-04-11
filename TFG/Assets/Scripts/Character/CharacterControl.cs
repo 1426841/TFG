@@ -18,7 +18,7 @@ public class CharacterControl : MonoBehaviour
         {
             action = Character.MoveRight;
         }
-        else if (Input.GetKey("left"))
+        else if (Input.GetKey(controller.GetLeft()))
         {
             action = Character.MoveLeft;
         }

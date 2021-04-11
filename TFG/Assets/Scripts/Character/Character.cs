@@ -25,10 +25,9 @@ public class Character :  MonoBehaviour
         {
             rigidBody.velocity = new Vector2(Speed, rigidBody.velocity.y);
         }
-        else if( action == MoveLeft)
+        else if (action == MoveLeft)
         {
             rigidBody.velocity = new Vector2(-Speed, rigidBody.velocity.y);
         }
-
     }
 }
