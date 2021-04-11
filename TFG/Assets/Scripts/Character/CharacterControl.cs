@@ -27,6 +27,11 @@ public class CharacterControl : MonoBehaviour
             action = Character.NoMove;
         }
 
+        if (Input.GetKey("space") && CharacterCollider.isColliding)
+        {
+            action = Character.Jump;
+        }
+
         character.SetAction(action);
     }
 }

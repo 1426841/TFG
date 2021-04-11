@@ -74,5 +74,22 @@ namespace Tests
 
             LogAssert.Expect(LogType.Warning, "Wrong character action!");
         }
+
+        [UnityTest]
+        public IEnumerator Jump()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            float originalPosition = character.transform.position.y;
+
+            yield return null;
+
+            character.SetAction(Character.Jump);
+
+            yield return new WaitForSeconds(1);
+
+            Assert.Greater(character.transform.position.y, originalPosition);
+        }
     }
 }
