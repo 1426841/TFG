@@ -2,6 +2,8 @@
 
 public class CharacterControl : MonoBehaviour
 {
+    public const float RespawnPosition = -5;
+    
     private Controller controller;
     private Character character;
     private string action;
@@ -32,7 +34,7 @@ public class CharacterControl : MonoBehaviour
             action = Character.Jump;
         }
 
-        if (character.transform.position.y < -5)
+        if (character.transform.position.y < RespawnPosition)
         {
             action = Character.Respawn;
         }

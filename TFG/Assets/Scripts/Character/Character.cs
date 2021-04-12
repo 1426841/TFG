@@ -8,7 +8,11 @@ public class Character :  MonoBehaviour
     public const string Jump = "jump";
     public const string Respawn = "respawn";
     private const float Speed = 7;
+    private const float NoSpeed = 0;
     private const float JumpSpeed = 8;
+    private const float InitialPositionX = -7;
+    private const float InitialPositionY = -3;
+    private const float InitialPositionZ = 0;
 
     private Rigidbody2D rigidBody;
     private string action;
@@ -35,13 +39,13 @@ public class Character :  MonoBehaviour
                 rigidBody.velocity = new Vector2(-Speed, rigidBody.velocity.y);
                 break;
             case NoMove:
-                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                rigidBody.velocity = new Vector2(NoSpeed, rigidBody.velocity.y);
                 break;
             case Jump:
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpSpeed);
                 break;
             case Respawn:
-                rigidBody.transform.position = new Vector3(-7f, -3f, 0);
+                rigidBody.transform.position = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
                 break;
             default:
                 Debug.LogWarning("Wrong character action!");

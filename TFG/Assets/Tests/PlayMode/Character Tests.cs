@@ -107,7 +107,7 @@ namespace Tests
             yield return new WaitForSeconds(1);
             
             Assert.Less(character.transform.position.y, originalPosition);
-            Assert.Greater(character.transform.position.y, -5);
+            Assert.Greater(character.transform.position.y, CharacterControl.RespawnPosition);
         }
     }
 }
