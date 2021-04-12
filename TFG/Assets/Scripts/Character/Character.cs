@@ -6,6 +6,7 @@ public class Character :  MonoBehaviour
     public const string MoveLeft = "moveLeft";
     public const string NoMove = "noMove";
     public const string Jump = "jump";
+    public const string Respawn = "respawn";
     private const float Speed = 7;
     private const float JumpSpeed = 8;
 
@@ -38,6 +39,9 @@ public class Character :  MonoBehaviour
                 break;
             case Jump:
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpSpeed);
+                break;
+            case Respawn:
+                rigidBody.transform.position = new Vector3(-7f, -3f, 0);
                 break;
             default:
                 Debug.LogWarning("Wrong character action!");

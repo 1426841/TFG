@@ -91,5 +91,23 @@ namespace Tests
 
             Assert.Greater(character.transform.position.y, originalPosition);
         }
+
+        [UnityTest]
+        public IEnumerator Respawn()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            float originalPosition = character.transform.position.y;
+
+            yield return null;
+
+            character.SetAction(Character.Respawn);
+
+            yield return new WaitForSeconds(1);
+            
+            Assert.Less(character.transform.position.y, originalPosition);
+            Assert.Greater(character.transform.position.y, -5);
+        }
     }
 }

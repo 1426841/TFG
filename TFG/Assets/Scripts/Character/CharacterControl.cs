@@ -32,6 +32,11 @@ public class CharacterControl : MonoBehaviour
             action = Character.Jump;
         }
 
+        if (character.transform.position.y < -5)
+        {
+            action = Character.Respawn;
+        }
+
         character.SetAction(action);
     }
 }
