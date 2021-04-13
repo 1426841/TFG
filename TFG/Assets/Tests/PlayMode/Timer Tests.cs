@@ -33,36 +33,28 @@ namespace Tests
             timer.gameObject.AddComponent<Text>();
 
             yield return null;
+            Assert.AreEqual(timer.GetTimerText(), "0:0,0");
 
-            //Time may vary slightly between tests, the two consecutive decimals are valid
-            if (timer.GetTimerText() == "0:0,01")
-            {
-                Assert.AreEqual(timer.GetTimerText(), "0:0,01");
-            }
-            else
-            {
-                Assert.AreEqual(timer.GetTimerText(), "0:0,02");
-            }
-            
             yield return new WaitForSeconds(1);
-            if (timer.GetTimerText() == "0:1,01")
-            {
-                Assert.AreEqual(timer.GetTimerText(), "0:1,01");
-            } else
-            {
-                Assert.AreEqual(timer.GetTimerText(), "0:1,02");
-            }
+            Assert.AreEqual(timer.GetTimerText(), "0:1,0");
 
             yield return new WaitForSeconds(59.5f);
-            if (timer.GetTimerText() == "1:0,51")
-            {
-                Assert.AreEqual(timer.GetTimerText(), "1:0,51");
-            }
-            else
-            {
-                Assert.AreEqual(timer.GetTimerText(), "1:0,52");
-            }
+            Assert.AreEqual(timer.GetTimerText(), "1:0,5");
+        }
 
+        [UnityTest]
+        public IEnumerator IsFinish()
+        {
+            var gameObject = new GameObject();
+            var timer = gameObject.AddComponent<Timer>();
+            timer.gameObject.AddComponent<Text>();
+
+            yield return null;
+            string initialTime = timer.GetTimerText();
+            timer.SetIsFinish(true);
+
+            yield return new WaitForSeconds(1);
+            Assert.AreEqual(timer.GetTimerText(), initialTime);
         }
     }
 }

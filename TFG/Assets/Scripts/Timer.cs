@@ -6,12 +6,14 @@ public class Timer : MonoBehaviour
     private Text timerText;
     private float initialTime;
     private float totalTime;
+    private bool isFinish;
 
     void Start()
     {
         timerText = GetComponent<Text>();
         initialTime = Time.time;
         totalTime = 0;
+        isFinish = false;
     }
 
     public float GetTotalTime()
@@ -24,13 +26,22 @@ public class Timer : MonoBehaviour
         return timerText.text;
     }
 
+    public void SetIsFinish(bool isFinish)
+    {
+        this.isFinish = isFinish;
+    }
+
     void Update()
     {
-        totalTime = Time.time - initialTime;
+        if (!isFinish)
+        {
+            totalTime = Time.time - initialTime;
 
-        float minutes = (int) totalTime / 60;
-        float seconds = totalTime % 60;
+            float minutes = (int)totalTime / 60;
+            float seconds = totalTime % 60;
 
-        timerText.text = minutes.ToString() + ":" + seconds.ToString("f2");
+            timerText.text = minutes.ToString() + ":" + seconds.ToString("f1");
+        }
+        
     }
 }
