@@ -19,10 +19,18 @@ public class Timer : MonoBehaviour
         return totalTime;
     }
 
+    public string GetTimerText()
+    {
+        return timerText.text;
+    }
+
     void Update()
     {
         totalTime = Time.time - initialTime;
 
-        timerText.text = totalTime.ToString();
+        float minutes = (int) totalTime / 60;
+        float seconds = totalTime % 60;
+
+        timerText.text = minutes.ToString() + ":" + seconds.ToString("f2");
     }
 }
