@@ -9,11 +9,12 @@ namespace Tests
         [Test]
         public void Save()
         {
-            File.Delete(Application.dataPath + "/SaveFile.json");
-            Assert.IsFalse(File.Exists(Application.dataPath + "/SaveFile.json"));
             SaveSystem saveSystem = new SaveSystem();
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+            Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
+            
             saveSystem.Save("0:0,0");
-            Assert.IsTrue(File.Exists(Application.dataPath + "/SaveFile.json"));
+            Assert.IsTrue(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
         }
     }
 }
