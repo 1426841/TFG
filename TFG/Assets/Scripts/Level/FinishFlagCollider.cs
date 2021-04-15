@@ -6,5 +6,6 @@ public class FinishFlagCollider : MonoBehaviour
     {
         Timer timer = FindObjectOfType<Timer>(); ;
         timer.SetIsFinish(true);
+        timer.SaveTime();
     }
 }
