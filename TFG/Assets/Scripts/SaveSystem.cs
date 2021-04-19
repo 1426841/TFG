@@ -26,15 +26,12 @@ public class SaveSystem
 
             if(saveFile.totalTime < oldSaveFile.totalTime)
             {
-                string json = JsonUtility.ToJson(saveFile);
-                File.WriteAllText(Application.dataPath + SaveFilePath, json);
+                SaveToJson(saveFile);
             }
         }
         else
         {
-            
-            string json = JsonUtility.ToJson(saveFile);
-            File.WriteAllText(Application.dataPath + SaveFilePath, json);
+            SaveToJson(saveFile);   
         }
         
     }
@@ -42,10 +39,16 @@ public class SaveSystem
     public SaveFile Load()
     {
         SaveFile saveFile = new SaveFile();
-        string json = File.ReadAllText(Application.dataPath + "/SaveFile.json");
+        string json = File.ReadAllText(Application.dataPath + SaveFilePath);
 
         saveFile = JsonUtility.FromJson<SaveFile>(json);
 
         return saveFile;
+    }
+
+    private void SaveToJson(SaveFile saveFile)
+    {
+        string json = JsonUtility.ToJson(saveFile);
+        File.WriteAllText(Application.dataPath + SaveFilePath, json);
     }
 }
