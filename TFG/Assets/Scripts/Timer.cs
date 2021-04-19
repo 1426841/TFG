@@ -41,12 +41,18 @@ public class Timer : MonoBehaviour
             float seconds = totalTime % 60;
 
             timerText.text = minutes.ToString() + ":" + seconds.ToString("f1");
-        } 
+        }
     }
 
     public void SaveTime()
     {
         SaveSystem saveSystem = new SaveSystem();
         saveSystem.Save(timerText.text, totalTime);
+    }
+
+    public void ResetTime()
+    {
+        initialTime = Time.time;
+        isFinish = false;
     }
 }

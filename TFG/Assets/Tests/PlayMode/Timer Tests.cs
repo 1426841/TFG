@@ -56,5 +56,19 @@ namespace Tests
             yield return new WaitForSeconds(1);
             Assert.AreEqual(timer.GetTimerText(), initialTime);
         }
+
+        [UnityTest]
+        public IEnumerator ResetTime()
+        {
+            var gameObject = new GameObject();
+            var timer = gameObject.AddComponent<Timer>();
+            timer.gameObject.AddComponent<Text>();
+
+            yield return new WaitForSeconds(0.5f);
+            timer.ResetTime();
+
+            yield return new WaitForSeconds(1);
+            Assert.AreEqual(timer.GetTimerText(), "0:1,0");
+        }
     }
 }
