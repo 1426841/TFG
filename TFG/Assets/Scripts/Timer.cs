@@ -47,6 +47,6 @@ public class Timer : MonoBehaviour
     public void SaveTime()
     {
         SaveSystem saveSystem = new SaveSystem();
-        saveSystem.Save(timerText.text);
+        saveSystem.Save(timerText.text, totalTime);
     }
 }
