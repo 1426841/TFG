@@ -9,7 +9,7 @@ public class SaveSystem : MonoBehaviour
     [Serializable]
     public struct SaveFile
     {
-        public string time;
+        public string timerText;
         public float totalTime;
         public int totalCollected;
     }
@@ -18,7 +18,7 @@ public class SaveSystem : MonoBehaviour
     {
         SaveFile saveFile = new SaveFile();
         Timer timer = FindObjectOfType<Timer>();
-        saveFile.time = timer.GetTimerText();
+        saveFile.timerText = timer.GetTimerText();
         saveFile.totalTime = timer.GetTotalTime();
         Collectables collectables = FindObjectOfType<Collectables>();
         saveFile.totalCollected = collectables.GetTotalCollected();
@@ -31,7 +31,7 @@ public class SaveSystem : MonoBehaviour
             if (saveFile.totalTime > oldSaveFile.totalTime)
             {
                 saveFile.totalTime = oldSaveFile.totalTime;
-                saveFile.time = oldSaveFile.time;
+                saveFile.timerText = oldSaveFile.timerText;
             }
 
             if (saveFile.totalCollected < oldSaveFile.totalCollected)
@@ -40,7 +40,8 @@ public class SaveSystem : MonoBehaviour
             }
         }
 
-        SaveToJson(saveFile);
+        string json = JsonUtility.ToJson(saveFile);
+        File.WriteAllText(Application.dataPath + SaveFilePath, json);
     }
 
     public SaveFile Load()
@@ -51,11 +52,5 @@ public class SaveSystem : MonoBehaviour
         saveFile = JsonUtility.FromJson<SaveFile>(json);
 
         return saveFile;
-    }
-
-    private void SaveToJson(SaveFile saveFile)
-    {
-        string json = JsonUtility.ToJson(saveFile);
-        File.WriteAllText(Application.dataPath + SaveFilePath, json);
     }
 }

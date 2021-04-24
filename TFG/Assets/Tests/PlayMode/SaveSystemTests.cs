@@ -46,7 +46,7 @@ namespace Tests
             saveSystem.Save();
             SaveSystem.SaveFile saveFile = new SaveSystem.SaveFile();
             saveFile = saveSystem.Load();
-            Assert.AreEqual(saveFile.time, "0:1,0");
+            Assert.AreEqual(saveFile.timerText, "0:1,0");
             Assert.AreEqual(saveFile.totalTime.ToString("f1"), "1,0");
             Assert.AreEqual(saveFile.totalCollected, 0);
 
@@ -55,7 +55,7 @@ namespace Tests
             collectables.gameObject.GetComponent<Collectables>().Collect();
             saveSystem.Save();
             saveFile = saveSystem.Load();
-            Assert.AreEqual(saveFile.time, "0:1,0");
+            Assert.AreEqual(saveFile.timerText, "0:1,0");
             Assert.AreEqual(saveFile.totalTime.ToString("f1"), "1,0");
             Assert.AreEqual(saveFile.totalCollected, 1);
 
@@ -64,7 +64,7 @@ namespace Tests
             yield return new WaitForSeconds(0.9f);
             saveSystem.Save();
             saveFile = saveSystem.Load();
-            Assert.AreEqual(saveFile.time, "0:0,9");
+            Assert.AreEqual(saveFile.timerText, "0:0,9");
             Assert.AreEqual(saveFile.totalTime.ToString("f1"), "0,9");
             Assert.AreEqual(saveFile.totalCollected, 1);
 
@@ -74,7 +74,7 @@ namespace Tests
             collectables.gameObject.GetComponent<Collectables>().Collect();
             saveSystem.Save();
             saveFile = saveSystem.Load();
-            Assert.AreEqual(saveFile.time, "0:0,5");
+            Assert.AreEqual(saveFile.timerText, "0:0,5");
             Assert.AreEqual(saveFile.totalTime.ToString("f1"), "0,5");
             Assert.AreEqual(saveFile.totalCollected, 2);
 
@@ -82,7 +82,7 @@ namespace Tests
             yield return new WaitForSeconds(0.1f);
             saveSystem.Save();
             saveFile = saveSystem.Load();
-            Assert.AreEqual(saveFile.time, "0:0,5");
+            Assert.AreEqual(saveFile.timerText, "0:0,5");
             Assert.AreEqual(saveFile.totalTime.ToString("f1"), "0,5");
             Assert.AreEqual(saveFile.totalCollected, 2);
 

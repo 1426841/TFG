@@ -45,12 +45,6 @@ public class Timer : MonoBehaviour
         }
     }
     
-    public void SaveTime()
-    {
-        SaveSystem saveSystem = new SaveSystem();
-        saveSystem.Save();
-    }
-    
     public void ResetTime()
     {
         initialTime = Time.time;
