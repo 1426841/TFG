@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerText = GetComponent<Text>();
+        timerText.text = "0:0,00";
         initialTime = Time.time;
         totalTime = 0;
         isFinish = false;
@@ -43,13 +44,13 @@ public class Timer : MonoBehaviour
             timerText.text = minutes.ToString() + ":" + seconds.ToString("f1");
         }
     }
-
+    
     public void SaveTime()
     {
         SaveSystem saveSystem = new SaveSystem();
-        saveSystem.Save(timerText.text, totalTime);
+        saveSystem.Save();
     }
-
+    
     public void ResetTime()
     {
         initialTime = Time.time;

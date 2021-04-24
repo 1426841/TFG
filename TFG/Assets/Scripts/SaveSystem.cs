@@ -2,7 +2,7 @@
 using System.IO;
 using UnityEngine;
 
-public class SaveSystem
+public class SaveSystem : MonoBehaviour
 {
     public const string SaveFilePath = "/SaveFile.json";
 
@@ -11,29 +11,36 @@ public class SaveSystem
     {
         public string time;
         public float totalTime;
+        public int totalCollected;
     }
 
-    public void Save(string time, float totalTime)
+    public void Save()
     {
         SaveFile saveFile = new SaveFile();
-        saveFile.time = time;
-        saveFile.totalTime = totalTime;
+        Timer timer = FindObjectOfType<Timer>();
+        saveFile.time = timer.GetTimerText();
+        saveFile.totalTime = timer.GetTotalTime();
+        Collectables collectables = FindObjectOfType<Collectables>();
+        saveFile.totalCollected = collectables.GetTotalCollected();
 
         if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
         {
             SaveFile oldSaveFile = new SaveFile();
             oldSaveFile = Load();
 
-            if(saveFile.totalTime < oldSaveFile.totalTime)
+            if (saveFile.totalTime > oldSaveFile.totalTime)
             {
-                SaveToJson(saveFile);
+                saveFile.totalTime = oldSaveFile.totalTime;
+                saveFile.time = oldSaveFile.time;
+            }
+
+            if (saveFile.totalCollected < oldSaveFile.totalCollected)
+            {
+                saveFile.totalCollected = oldSaveFile.totalCollected;
             }
         }
-        else
-        {
-            SaveToJson(saveFile);   
-        }
-        
+
+        SaveToJson(saveFile);
     }
 
     public SaveFile Load()

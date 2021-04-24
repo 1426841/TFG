@@ -15,6 +15,10 @@ public class Collectables : MonoBehaviour
         collectablesText = GetComponent<Text>();
         collectablesText.text = totalCollected.ToString();
     }
+    public int GetTotalCollected()
+    {
+        return totalCollected;
+    }
 
     public string GetCollectablesText()
     {
@@ -26,5 +30,4 @@ public class Collectables : MonoBehaviour
         totalCollected ++;
         collectablesText.text = totalCollected.ToString();
     }
-
 }
