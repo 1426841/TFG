@@ -13,6 +13,9 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+            character.gameObject.AddComponent<SpriteRenderer>();
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -30,6 +33,9 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+            character.gameObject.AddComponent<SpriteRenderer>();
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -47,6 +53,8 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -64,6 +72,8 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -81,6 +91,8 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
             float originalPosition = character.transform.position.y;
 
             yield return null;
@@ -98,6 +110,8 @@ namespace Tests
             var gameObject = new GameObject();
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
             float originalPosition = character.transform.position.y;
 
             yield return null;
