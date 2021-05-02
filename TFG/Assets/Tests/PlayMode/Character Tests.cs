@@ -17,6 +17,9 @@ namespace Tests
             character.gameObject.AddComponent<Animator>();
             character.gameObject.AddComponent<SpriteRenderer>();
 
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
+
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
             GameObject heart3 = new GameObject();
@@ -51,6 +54,9 @@ namespace Tests
             character.gameObject.AddComponent<Animator>();
             character.gameObject.AddComponent<SpriteRenderer>();
 
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
+
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
             GameObject heart3 = new GameObject();
@@ -83,6 +89,9 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
@@ -117,6 +126,9 @@ namespace Tests
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
 
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
+
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
             GameObject heart3 = new GameObject();
@@ -149,6 +161,9 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
@@ -183,6 +198,9 @@ namespace Tests
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
 
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
+
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
             GameObject heart3 = new GameObject();
@@ -216,6 +234,9 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();

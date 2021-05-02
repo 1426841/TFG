@@ -22,6 +22,7 @@ public class Character :  MonoBehaviour
     private SpriteRenderer characterSpriteRenderer;
     private Animator characterAnimator;
     private int hearts;
+    private Camera camera;
 
     public void Start()
     {
@@ -31,6 +32,7 @@ public class Character :  MonoBehaviour
         characterAnimator = GetComponent<Animator>();
         hearts = 3;
         ActivateHearts(true, true, true, false, false, false);
+        camera = FindObjectOfType<Camera>();
     }
 
     public void SetAction(string action)
@@ -83,6 +85,11 @@ public class Character :  MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        camera.transform.position = new Vector3(transform.position.x, 0, -1);
+    }
+
     public void Damage()
     {
         hearts = --hearts;
@@ -107,5 +114,4 @@ public class Character :  MonoBehaviour
         this.noHeart2.gameObject.SetActive(noHeart2);
         this.noHeart3.gameObject.SetActive(noHeart3);
     }
-
 }
