@@ -7,6 +7,7 @@ namespace Tests
 {
     public class CharacterTests
     {
+
         [UnityTest]
         public IEnumerator MoveRight()
         {
@@ -15,6 +16,20 @@ namespace Tests
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
             character.gameObject.AddComponent<SpriteRenderer>();
+
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
 
             float originalPosition = character.transform.position.x;
 
@@ -36,6 +51,20 @@ namespace Tests
             character.gameObject.AddComponent<Animator>();
             character.gameObject.AddComponent<SpriteRenderer>();
 
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -54,6 +83,20 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
 
             float originalPosition = character.transform.position.x;
 
@@ -74,6 +117,20 @@ namespace Tests
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
 
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
+
             float originalPosition = character.transform.position.x;
 
             yield return null;
@@ -92,6 +149,20 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
 
             float originalPosition = character.transform.position.y;
 
@@ -112,6 +183,20 @@ namespace Tests
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
 
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
+
             float originalPosition = character.transform.position.y;
 
             yield return null;
@@ -122,6 +207,94 @@ namespace Tests
             
             Assert.Less(character.transform.position.y, originalPosition);
             Assert.Greater(character.transform.position.y, CharacterControl.RespawnPosition);
+        }
+
+        [UnityTest]
+        public IEnumerator Damage()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
+
+            yield return null;
+
+            //3 hearts, 0 noHearts
+            Assert.True(character.heart1.activeSelf);
+            Assert.True(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.False(character.noHeart1.activeSelf);
+            Assert.False(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
+
+            character.Damage();
+            yield return null;
+
+            //2 hearts, 1 noHeart
+            Assert.False(character.heart1.activeSelf);
+            Assert.True(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.True(character.noHeart1.activeSelf);
+            Assert.False(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
+
+            character.Damage();
+            yield return null;
+
+            //1 heart, 2 noHearts
+            Assert.False(character.heart1.activeSelf);
+            Assert.False(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.True(character.noHeart1.activeSelf);
+            Assert.True(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
+
+            character.Damage();
+            yield return new WaitForSeconds(0.1f);
+
+            //3 hearts, 0 noHearts
+            Assert.True(character.heart1.activeSelf);
+            Assert.True(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.False(character.noHeart1.activeSelf);
+            Assert.False(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
+
+            character.Damage();
+            yield return null;
+
+            //2 hearts, 1 noHeart
+            Assert.False(character.heart1.activeSelf);
+            Assert.True(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.True(character.noHeart1.activeSelf);
+            Assert.False(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
+
+            character.SetAction(Character.Respawn);
+            yield return new WaitForSeconds(0.1f);
+
+            //3 hearts, 0 noHearts
+            Assert.True(character.heart1.activeSelf);
+            Assert.True(character.heart2.activeSelf);
+            Assert.True(character.heart3.activeSelf);
+            Assert.False(character.noHeart1.activeSelf);
+            Assert.False(character.noHeart2.activeSelf);
+            Assert.False(character.noHeart3.activeSelf);
         }
     }
 }
