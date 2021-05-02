@@ -2,25 +2,29 @@
 
 public class DamageCollider : MonoBehaviour
 {
+    private const float MaxTimeStay = 2;
 
     private float timeStayed;
+    private Character character;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-            Character character = FindObjectOfType<Character>();
-            character.Damage();
-            timeStayed = 0;
+        character = FindObjectOfType<Character>();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {    
+        character.Damage();
+        timeStayed = 0;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (timeStayed < 2)
+        if (timeStayed < MaxTimeStay)
         {
             timeStayed += Time.deltaTime;
         }
         else
         {
-            Character character = FindObjectOfType<Character>();
             character.Damage();
             timeStayed = 0;
         }

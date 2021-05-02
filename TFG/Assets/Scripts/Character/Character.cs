@@ -30,13 +30,7 @@ public class Character :  MonoBehaviour
         characterSpriteRenderer = GetComponent<SpriteRenderer>();
         characterAnimator = GetComponent<Animator>();
         hearts = 3;
-        this.heart1.gameObject.SetActive(true);
-        this.heart2.gameObject.SetActive(true);
-        this.heart3.gameObject.SetActive(true);
-        this.noHeart1.gameObject.SetActive(false);
-        this.noHeart2.gameObject.SetActive(false);
-        this.noHeart3.gameObject.SetActive(false);
-
+        ActivateHearts(true, true, true, false, false, false);
     }
 
     public void SetAction(string action)
@@ -74,12 +68,7 @@ public class Character :  MonoBehaviour
             case Respawn:
                 rigidBody.transform.position = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
                 hearts = 3;
-                this.heart1.gameObject.SetActive(true);
-                this.heart2.gameObject.SetActive(true);
-                this.heart3.gameObject.SetActive(true);
-                this.noHeart1.gameObject.SetActive(false);
-                this.noHeart2.gameObject.SetActive(false);
-                this.noHeart3.gameObject.SetActive(false);
+                ActivateHearts(true, true, true, false, false, false);
                 break;
             default:
                 Debug.LogWarning("Wrong character action!");
@@ -100,21 +89,23 @@ public class Character :  MonoBehaviour
 
         if (hearts == 2)
         {
-            this.heart1.gameObject.SetActive(false);
-            this.heart2.gameObject.SetActive(true);
-            this.heart3.gameObject.SetActive(true);
-            this.noHeart1.gameObject.SetActive(true);
-            this.noHeart2.gameObject.SetActive(false);
-            this.noHeart3.gameObject.SetActive(false);
+            ActivateHearts(false, true, true, true, false, false);
         }
         else if (hearts == 1)
         {
-            this.heart1.gameObject.SetActive(false);
-            this.heart2.gameObject.SetActive(false);
-            this.heart3.gameObject.SetActive(true);
-            this.noHeart1.gameObject.SetActive(true);
-            this.noHeart2.gameObject.SetActive(true);
-            this.noHeart3.gameObject.SetActive(false);
+            ActivateHearts(false, false, true, true, true, false);
         }
+
     }
+
+    private void ActivateHearts(bool heart1, bool heart2, bool heart3, bool noHeart1, bool noHeart2, bool noHeart3)
+    {
+        this.heart1.gameObject.SetActive(heart1);
+        this.heart2.gameObject.SetActive(heart2);
+        this.heart3.gameObject.SetActive(heart3);
+        this.noHeart1.gameObject.SetActive(noHeart1);
+        this.noHeart2.gameObject.SetActive(noHeart2);
+        this.noHeart3.gameObject.SetActive(noHeart3);
+    }
+
 }
