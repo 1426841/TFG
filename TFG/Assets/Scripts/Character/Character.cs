@@ -7,6 +7,7 @@ public class Character :  MonoBehaviour
     public const string NoMove = "noMove";
     public const string Jump = "jump";
     public const string Respawn = "respawn";
+    public const string Dash = "dash";
     private const string IsMoving = "isMoving";
     private const string IsJumping = "isJumping";
     private const float Speed = 7;
@@ -72,7 +73,7 @@ public class Character :  MonoBehaviour
                 hearts = 3;
                 ActivateHearts(true, true, true, false, false, false);
                 break;
-            case "dash":
+            case Dash:
                 characterAnimator.SetBool(IsJumping, true);
                 if (characterSpriteRenderer.flipX == false)
                 {

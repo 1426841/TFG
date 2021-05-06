@@ -36,7 +36,7 @@ namespace Tests
             float originalPosition = character.transform.position.x;
             yield return null;
 
-            character.SetAction("dash");
+            character.SetAction(Character.Dash);
 
             yield return new WaitForSeconds(0.1f);
 

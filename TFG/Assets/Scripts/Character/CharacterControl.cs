@@ -34,9 +34,9 @@ public class CharacterControl : MonoBehaviour
             action = Character.Jump;
         }
 
-        if (Input.GetKey("q"))
+        if (Input.GetKey(controller.GetDash()))
         {
-            action = "dash";
+            action = Character.Dash;
         }
 
         if (character.transform.position.y < RespawnPosition)
