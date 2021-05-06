@@ -72,12 +72,23 @@ public class Character :  MonoBehaviour
                 hearts = 3;
                 ActivateHearts(true, true, true, false, false, false);
                 break;
+            case "dash":
+                characterAnimator.SetBool(IsJumping, true);
+                if (characterSpriteRenderer.flipX == false)
+                {
+                    rigidBody.velocity = new Vector2(Speed * 2, 0);
+                }
+                else
+                {
+                    rigidBody.velocity = new Vector2(-Speed * 2, 0);
+                }
+                break;
             default:
                 Debug.LogWarning("Wrong character action!");
                 break;
         }
 
-        if (CharacterCollider.isColliding)
+        if (CharacterCollider.isColliding && action != "dash")
         {
             characterAnimator.SetBool(IsJumping, false);
         } else {

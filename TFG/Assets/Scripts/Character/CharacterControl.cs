@@ -34,6 +34,11 @@ public class CharacterControl : MonoBehaviour
             action = Character.Jump;
         }
 
+        if (Input.GetKey("q"))
+        {
+            action = "dash";
+        }
+
         if (character.transform.position.y < RespawnPosition)
         {
             action = Character.Respawn;
