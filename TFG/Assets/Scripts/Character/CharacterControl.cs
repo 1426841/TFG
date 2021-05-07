@@ -7,11 +7,13 @@ public class CharacterControl : MonoBehaviour
     private Controller controller;
     private Character character;
     private string action;
+    private Ability ability;
 
     void Start()
     {
         controller = new Controller();
         character = GetComponent<Character>();
+        ability = GetComponent<Ability>();
     }
 
     void FixedUpdate()
@@ -36,7 +38,13 @@ public class CharacterControl : MonoBehaviour
 
         if (Input.GetKey(controller.GetDash()))
         {
+            ability.UseAbility(Character.Dash);
             action = Character.Dash;
+        }
+
+        if (ability.IsUsingAbility())
+        {
+            action = ability.GetAbility();
         }
 
         if (character.transform.position.y < RespawnPosition)

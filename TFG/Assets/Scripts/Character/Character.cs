@@ -89,7 +89,7 @@ public class Character :  MonoBehaviour
                 break;
         }
 
-        if (CharacterCollider.isColliding && action != "dash")
+        if (CharacterCollider.isColliding && action != Dash)
         {
             characterAnimator.SetBool(IsJumping, false);
         } else {
