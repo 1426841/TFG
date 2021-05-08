@@ -2,6 +2,8 @@
 
 public class Ability : MonoBehaviour
 {
+    private const float MaxAbilityTime = 0.35f;
+
     private int abilityPoints;
     private float timeAbility;
     private float timeCoolDown;
@@ -19,7 +21,7 @@ public class Ability : MonoBehaviour
         if (usingAbility)
         {
             timeAbility += Time.deltaTime;
-            if (timeAbility >= 0.35)
+            if (timeAbility >= MaxAbilityTime)
             {
                 usingAbility = false;
                 --abilityPoints;
@@ -31,7 +33,7 @@ public class Ability : MonoBehaviour
         else if (coolDown)
         {
             timeCoolDown += Time.deltaTime;
-            if (timeCoolDown >= 0.35)
+            if (timeCoolDown >= MaxAbilityTime)
             {
                 coolDown = false;
                 timeCoolDown = 0;
