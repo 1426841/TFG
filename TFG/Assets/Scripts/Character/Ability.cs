@@ -27,31 +27,16 @@ public class Ability : MonoBehaviour
                 usingAbility = false;
                 --abilityPoints;
 
-                if(abilityPoints == 2)
+                if (abilityPoints == 2)
                 {
-                    this.abilityPoint1.gameObject.SetActive(false);
-                    this.abilityPoint2.gameObject.SetActive(true);
-                    this.abilityPoint3.gameObject.SetActive(true);
-                    this.noAbilityPoint1.gameObject.SetActive(true);
-                    this.noAbilityPoint2.gameObject.SetActive(false);
-                    this.noAbilityPoint3.gameObject.SetActive(false);
-                } else if(abilityPoints == 1)
+                    ActivateHearts(false, true, true, true, false, false);
+                } else if (abilityPoints == 1)
                 {
-                    this.abilityPoint1.gameObject.SetActive(false);
-                    this.abilityPoint2.gameObject.SetActive(false);
-                    this.abilityPoint3.gameObject.SetActive(true);
-                    this.noAbilityPoint1.gameObject.SetActive(true);
-                    this.noAbilityPoint2.gameObject.SetActive(true);
-                    this.noAbilityPoint3.gameObject.SetActive(false);
+                    ActivateHearts(false, false, true, true, true, false);
                 }
                 else
                 {
-                    this.abilityPoint1.gameObject.SetActive(false);
-                    this.abilityPoint2.gameObject.SetActive(false);
-                    this.abilityPoint3.gameObject.SetActive(false);
-                    this.noAbilityPoint1.gameObject.SetActive(true);
-                    this.noAbilityPoint2.gameObject.SetActive(true);
-                    this.noAbilityPoint3.gameObject.SetActive(true);
+                    ActivateHearts(false, false, false, true, true, true);
                 }
 
                 timeAbility = 0;
@@ -105,11 +90,16 @@ public class Ability : MonoBehaviour
         timeCoolDown = 0;
         usingAbility = false;
         coolDown = false;
-        this.abilityPoint1.gameObject.SetActive(true);
-        this.abilityPoint2.gameObject.SetActive(true);
-        this.abilityPoint3.gameObject.SetActive(true);
-        this.noAbilityPoint1.gameObject.SetActive(false);
-        this.noAbilityPoint2.gameObject.SetActive(false);
-        this.noAbilityPoint3.gameObject.SetActive(false);
+        ActivateHearts(true, true, true, false, false, false);
+    }
+
+    private void ActivateHearts(bool abilityPoint1, bool abilityPoint2, bool abilityPoint3, bool noAbilityPoint1, bool noAbilityPoint2, bool noAbilityPoint3)
+    {
+        this.abilityPoint1.gameObject.SetActive(abilityPoint1);
+        this.abilityPoint2.gameObject.SetActive(abilityPoint2);
+        this.abilityPoint3.gameObject.SetActive(abilityPoint3);
+        this.noAbilityPoint1.gameObject.SetActive(noAbilityPoint1);
+        this.noAbilityPoint2.gameObject.SetActive(noAbilityPoint2);
+        this.noAbilityPoint3.gameObject.SetActive(noAbilityPoint3);
     }
 }
