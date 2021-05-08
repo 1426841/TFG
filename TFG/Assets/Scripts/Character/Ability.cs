@@ -4,6 +4,7 @@ public class Ability : MonoBehaviour
 {
     private const float MaxAbilityTime = 0.35f;
 
+    public GameObject abilityPoint1, abilityPoint2, abilityPoint3, noAbilityPoint1, noAbilityPoint2, noAbilityPoint3;
     private int abilityPoints;
     private float timeAbility;
     private float timeCoolDown;
@@ -25,6 +26,34 @@ public class Ability : MonoBehaviour
             {
                 usingAbility = false;
                 --abilityPoints;
+
+                if(abilityPoints == 2)
+                {
+                    this.abilityPoint1.gameObject.SetActive(false);
+                    this.abilityPoint2.gameObject.SetActive(true);
+                    this.abilityPoint3.gameObject.SetActive(true);
+                    this.noAbilityPoint1.gameObject.SetActive(true);
+                    this.noAbilityPoint2.gameObject.SetActive(false);
+                    this.noAbilityPoint3.gameObject.SetActive(false);
+                } else if(abilityPoints == 1)
+                {
+                    this.abilityPoint1.gameObject.SetActive(false);
+                    this.abilityPoint2.gameObject.SetActive(false);
+                    this.abilityPoint3.gameObject.SetActive(true);
+                    this.noAbilityPoint1.gameObject.SetActive(true);
+                    this.noAbilityPoint2.gameObject.SetActive(true);
+                    this.noAbilityPoint3.gameObject.SetActive(false);
+                }
+                else
+                {
+                    this.abilityPoint1.gameObject.SetActive(false);
+                    this.abilityPoint2.gameObject.SetActive(false);
+                    this.abilityPoint3.gameObject.SetActive(false);
+                    this.noAbilityPoint1.gameObject.SetActive(true);
+                    this.noAbilityPoint2.gameObject.SetActive(true);
+                    this.noAbilityPoint3.gameObject.SetActive(true);
+                }
+
                 timeAbility = 0;
                 coolDown = true;
             }
@@ -76,5 +105,11 @@ public class Ability : MonoBehaviour
         timeCoolDown = 0;
         usingAbility = false;
         coolDown = false;
+        this.abilityPoint1.gameObject.SetActive(true);
+        this.abilityPoint2.gameObject.SetActive(true);
+        this.abilityPoint3.gameObject.SetActive(true);
+        this.noAbilityPoint1.gameObject.SetActive(false);
+        this.noAbilityPoint2.gameObject.SetActive(false);
+        this.noAbilityPoint3.gameObject.SetActive(false);
     }
 }
