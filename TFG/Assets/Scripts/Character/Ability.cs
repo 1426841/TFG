@@ -2,14 +2,16 @@
 
 public class Ability : MonoBehaviour
 {
+    private int abilityPoints;
     private float timeAbility;
+    private float timeCoolDown;
     private bool usingAbility;
+    private bool coolDown;
     private string ability;
 
     void Start()
     {
-        timeAbility = 0;
-        usingAbility = false;
+        ResetAbility();
     }
 
     void FixedUpdate()
@@ -20,7 +22,19 @@ public class Ability : MonoBehaviour
             if (timeAbility >= 0.35)
             {
                 usingAbility = false;
+                --abilityPoints;
                 timeAbility = 0;
+                coolDown = true;
+            }
+
+        }
+        else if (coolDown)
+        {
+            timeCoolDown += Time.deltaTime;
+            if (timeCoolDown >= 0.35)
+            {
+                coolDown = false;
+                timeCoolDown = 0;
             }
         }
     }
@@ -36,8 +50,29 @@ public class Ability : MonoBehaviour
         return ability;
     }
 
+    public bool CanUseAbility()
+    {
+        if (abilityPoints > 0 && !coolDown && !usingAbility)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public bool IsUsingAbility()
     {
         return usingAbility;
+    }
+
+    public void ResetAbility()
+    {
+        abilityPoints = 3;
+        timeAbility = 0;
+        timeCoolDown = 0;
+        usingAbility = false;
+        coolDown = false;
     }
 }

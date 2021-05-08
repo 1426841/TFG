@@ -36,7 +36,7 @@ public class CharacterControl : MonoBehaviour
             action = Character.Jump;
         }
 
-        if (Input.GetKey(controller.GetDash()))
+        if (Input.GetKey(controller.GetDash()) && ability.CanUseAbility())
         {
             ability.UseAbility(Character.Dash);
             action = Character.Dash;
@@ -50,6 +50,7 @@ public class CharacterControl : MonoBehaviour
         if (character.transform.position.y < RespawnPosition)
         {
             action = Character.Respawn;
+            ability.ResetAbility();
         }
 
         character.SetAction(action);
