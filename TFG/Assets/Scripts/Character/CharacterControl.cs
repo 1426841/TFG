@@ -8,12 +8,23 @@ public class CharacterControl : MonoBehaviour
     private Character character;
     private string action;
     private Ability ability;
+    private SettingsMenu settingsMenu;
 
     void Start()
     {
         controller = new Controller();
         character = GetComponent<Character>();
         ability = GetComponent<Ability>();
+        settingsMenu = FindObjectOfType<SettingsMenu>();
+        settingsMenu.OpenCloseSettings();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("m"))
+        {
+            settingsMenu.OpenCloseSettings();
+        }
     }
 
     void FixedUpdate()

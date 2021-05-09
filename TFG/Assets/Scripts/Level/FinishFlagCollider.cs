@@ -6,7 +6,7 @@ public class FinishFlagCollider : MonoBehaviour
     {
         Timer timer = FindObjectOfType<Timer>();
         timer.SetIsFinish(true);
-        SaveSystem saveSystem = FindObjectOfType<SaveSystem>(); ;
+        SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
         saveSystem.Save();
         Character character = FindObjectOfType<Character>();
         character.SetAction(Character.Respawn);

@@ -53,6 +53,10 @@ namespace Tests
             character.gameObject.AddComponent<SpriteRenderer>();
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
+            character.gameObject.AddComponent<SettingsMenu>();
+
+            GameObject settingsMenuGameObject = new GameObject();
+            character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
@@ -126,6 +130,10 @@ namespace Tests
             character.gameObject.AddComponent<SpriteRenderer>();
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
+            character.gameObject.AddComponent<SettingsMenu>();
+
+            GameObject settingsMenuGameObject = new GameObject();
+            character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
@@ -212,6 +220,10 @@ namespace Tests
             character.gameObject.AddComponent<SpriteRenderer>();
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
+            character.gameObject.AddComponent<SettingsMenu>();
+
+            GameObject settingsMenuGameObject = new GameObject();
+            character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;
 
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
