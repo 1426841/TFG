@@ -21,7 +21,7 @@ public class CharacterControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("m"))
+        if (Input.GetKeyDown(controller.GetSettingsMenu()))
         {
             settingsMenu.OpenCloseSettings();
         }
