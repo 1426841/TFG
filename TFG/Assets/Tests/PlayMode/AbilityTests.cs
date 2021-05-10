@@ -33,6 +33,11 @@ namespace Tests
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
 
+            GameObject audioGameObject = new GameObject();
+            var audio = audioGameObject.AddComponent<AudioSource>();
+            character.jumpAudio = audio;
+            character.dashAudio = audio;
+
             float originalPosition = character.transform.position.x;
             yield return null;
 
@@ -74,6 +79,11 @@ namespace Tests
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
+
+            GameObject audioGameObject = new GameObject();
+            var audio = audioGameObject.AddComponent<AudioSource>();
+            character.jumpAudio = audio;
+            character.dashAudio = audio;
 
             GameObject abilityPoint1 = new GameObject();
             GameObject abilityPoint2 = new GameObject();
@@ -151,6 +161,11 @@ namespace Tests
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
+
+            GameObject audioGameObject = new GameObject();
+            var audio = audioGameObject.AddComponent<AudioSource>();
+            character.jumpAudio = audio;
+            character.dashAudio = audio;
 
             GameObject abilityPoint1 = new GameObject();
             GameObject abilityPoint2 = new GameObject();
@@ -241,6 +256,11 @@ namespace Tests
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
+
+            GameObject audioGameObject = new GameObject();
+            var audio = audioGameObject.AddComponent<AudioSource>();
+            character.jumpAudio = audio;
+            character.dashAudio = audio;
 
             GameObject abilityPoint1 = new GameObject();
             GameObject abilityPoint2 = new GameObject();

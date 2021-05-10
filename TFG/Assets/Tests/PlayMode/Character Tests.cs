@@ -165,6 +165,11 @@ namespace Tests
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
 
+            GameObject audioGameObject = new GameObject();
+            var audio = audioGameObject.AddComponent<AudioSource>();
+            character.jumpAudio = audio;
+            character.dashAudio = audio;
+
             GameObject heart1 = new GameObject();
             GameObject heart2 = new GameObject();
             GameObject heart3 = new GameObject();

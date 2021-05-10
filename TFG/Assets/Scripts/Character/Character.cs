@@ -18,6 +18,8 @@ public class Character :  MonoBehaviour
     private const float InitialPositionZ = 0;
 
     public GameObject heart1, heart2, heart3, noHeart1, noHeart2, noHeart3;
+    public AudioSource jumpAudio;
+    public AudioSource dashAudio;
     private Rigidbody2D rigidBody;
     private string action;
     private SpriteRenderer characterSpriteRenderer;
@@ -25,7 +27,7 @@ public class Character :  MonoBehaviour
     private int hearts;
     private Camera camera;
     private Vector3 respawnPosition;
-
+    
     public void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -69,6 +71,10 @@ public class Character :  MonoBehaviour
             case Jump:
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpSpeed);
                 characterAnimator.SetBool(IsJumping, true);
+                if (!jumpAudio.isPlaying)
+                {
+                    jumpAudio.Play();
+                }
                 break;
             case Respawn:
                 rigidBody.transform.position = respawnPosition;
@@ -77,6 +83,10 @@ public class Character :  MonoBehaviour
                 break;
             case Dash:
                 characterAnimator.SetBool(IsJumping, true);
+                if (!dashAudio.isPlaying)
+                {
+                    dashAudio.Play();
+                }
                 if (characterSpriteRenderer.flipX == false)
                 {
                     rigidBody.velocity = new Vector2(Speed * 2, 0);
