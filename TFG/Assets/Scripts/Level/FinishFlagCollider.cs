@@ -9,6 +9,7 @@ public class FinishFlagCollider : MonoBehaviour
         SaveSystem saveSystem = FindObjectOfType<SaveSystem>();
         saveSystem.Save();
         Character character = FindObjectOfType<Character>();
+        character.setRespawnPosition(new Vector3(-7, -3, 0));
         character.SetAction(Character.Respawn);
         timer.ResetTime();
     }

@@ -24,6 +24,7 @@ public class Character :  MonoBehaviour
     private Animator characterAnimator;
     private int hearts;
     private Camera camera;
+    private Vector3 respawnPosition;
 
     public void Start()
     {
@@ -34,6 +35,7 @@ public class Character :  MonoBehaviour
         hearts = 3;
         ActivateHearts(true, true, true, false, false, false);
         camera = FindObjectOfType<Camera>();
+        respawnPosition = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
     }
 
     public void SetAction(string action)
@@ -69,7 +71,7 @@ public class Character :  MonoBehaviour
                 characterAnimator.SetBool(IsJumping, true);
                 break;
             case Respawn:
-                rigidBody.transform.position = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
+                rigidBody.transform.position = respawnPosition;
                 hearts = 3;
                 ActivateHearts(true, true, true, false, false, false);
                 break;
@@ -125,5 +127,10 @@ public class Character :  MonoBehaviour
         this.noHeart1.gameObject.SetActive(noHeart1);
         this.noHeart2.gameObject.SetActive(noHeart2);
         this.noHeart3.gameObject.SetActive(noHeart3);
+    }
+
+    public void setRespawnPosition(Vector3 respawnPosition)
+    {
+        this.respawnPosition = respawnPosition;
     }
 }

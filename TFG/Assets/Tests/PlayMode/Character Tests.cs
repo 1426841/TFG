@@ -317,5 +317,51 @@ namespace Tests
             Assert.False(character.noHeart2.activeSelf);
             Assert.False(character.noHeart3.activeSelf);
         }
+
+        [UnityTest]
+        public IEnumerator setRespawnPosition()
+        {
+            var gameObject = new GameObject();
+            var character = gameObject.AddComponent<Character>();
+            character.gameObject.AddComponent<Rigidbody2D>();
+            character.gameObject.AddComponent<Animator>();
+
+            var cameraObject = new GameObject();
+            var camera = cameraObject.AddComponent<Camera>();
+
+            GameObject heart1 = new GameObject();
+            GameObject heart2 = new GameObject();
+            GameObject heart3 = new GameObject();
+            GameObject noHeart1 = new GameObject();
+            GameObject noHeart2 = new GameObject();
+            GameObject noHeart3 = new GameObject();
+
+            character.heart1 = heart1;
+            character.heart2 = heart2;
+            character.heart3 = heart3;
+            character.noHeart1 = noHeart1;
+            character.noHeart2 = noHeart2;
+            character.noHeart3 = noHeart3;
+
+            yield return null;
+
+            character.SetAction(Character.Respawn);
+
+            yield return new WaitForSeconds(0.1f);
+
+            Assert.AreEqual(character.transform.position.x, -7);
+            Assert.AreEqual((int) character.transform.position.y, -3);
+            Assert.AreEqual(character.transform.position.z, 0);
+
+            character.setRespawnPosition(new Vector3(10, -5, -2));
+
+            character.SetAction(Character.Respawn);
+
+            yield return new WaitForSeconds(0.1f);
+
+            Assert.AreEqual(character.transform.position.x, 10);
+            Assert.AreEqual((int) character.transform.position.y, -5);
+            Assert.AreEqual(character.transform.position.z, -2);
+        }
     }
 }
