@@ -3,6 +3,7 @@
 public class SettingsMenu : MonoBehaviour
 {
     public GameObject settingsMenu;
+    public GraphicsSettings graphicsSettings;
 
     void Start()
     {
@@ -18,6 +19,12 @@ public class SettingsMenu : MonoBehaviour
         else
         {
             settingsMenu.gameObject.SetActive(true);
+            graphicsSettings.SelectFirstSetting();
         }
     }
+
+    public bool isOpenSettings()
+    {
+        return settingsMenu.activeSelf;
+    } 
 }

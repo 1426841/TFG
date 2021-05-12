@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Tests
 {
@@ -13,6 +15,13 @@ namespace Tests
 
             GameObject settingsMenuGameObject = new GameObject();
             settingsMenu.settingsMenu = settingsMenuGameObject;
+
+            GraphicsSettings graphicsSettings = gameObject.AddComponent<GraphicsSettings>();
+            Toggle toggle = gameObject.AddComponent<Toggle>();
+            graphicsSettings.toggle = toggle;
+            EventSystem eventSystem = gameObject.AddComponent<EventSystem>();
+            graphicsSettings.eventSystem = eventSystem;
+            settingsMenu.graphicsSettings = graphicsSettings;
 
             Assert.True(settingsMenu.settingsMenu.activeSelf);
 
