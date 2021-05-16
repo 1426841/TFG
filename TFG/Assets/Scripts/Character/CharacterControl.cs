@@ -12,7 +12,7 @@ public class CharacterControl : MonoBehaviour
 
     void Start()
     {
-        controller = new Controller();
+        controller = FindObjectOfType<Controller>();
         character = GetComponent<Character>();
         ability = GetComponent<Ability>();
         settingsMenu = FindObjectOfType<SettingsMenu>();

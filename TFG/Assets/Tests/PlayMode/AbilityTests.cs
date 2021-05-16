@@ -59,6 +59,7 @@ namespace Tests
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
             character.gameObject.AddComponent<SettingsMenu>();
+            character.gameObject.AddComponent<Controller>();
 
             GameObject settingsMenuGameObject = new GameObject();
             character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;
@@ -141,6 +142,7 @@ namespace Tests
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
             character.gameObject.AddComponent<SettingsMenu>();
+            character.gameObject.AddComponent<Controller>();
 
             GameObject settingsMenuGameObject = new GameObject();
             character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;
@@ -236,6 +238,7 @@ namespace Tests
             character.gameObject.AddComponent<Ability>();
             character.gameObject.AddComponent<CharacterControl>();
             character.gameObject.AddComponent<SettingsMenu>();
+            character.gameObject.AddComponent<Controller>();
 
             GameObject settingsMenuGameObject = new GameObject();
             character.GetComponent<SettingsMenu>().settingsMenu = settingsMenuGameObject;

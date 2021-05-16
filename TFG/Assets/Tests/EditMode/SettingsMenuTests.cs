@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Tests
 {
-    public class test
+    public class SettingsMenuTests
     {
         [Test]
         public void OpenCloseSettings()
