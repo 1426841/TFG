@@ -52,4 +52,14 @@ public class ControlsSettings : MonoBehaviour
             repeatedKey.gameObject.SetActive(true);
         }
     }
+
+    public void SetDashControl(string key)
+    {
+        key = key.ToLower();
+        if (key != "" && !controller.IsKeyRepeated(key))
+        {
+            controller.SetDash(key);
+            dashKey.text = controller.GetDash();
+        }
+    }
 }

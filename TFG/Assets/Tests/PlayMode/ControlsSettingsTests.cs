@@ -63,5 +63,42 @@ namespace Tests
             Assert.False(controlsSettings.repeatedKey.IsActive());
 
         }
+
+        [UnityTest]
+        public IEnumerator SetDashControl()
+        {
+            var gameObject = new GameObject();
+            var controlsSettings = gameObject.AddComponent<ControlsSettings>();
+            controlsSettings.gameObject.AddComponent<Controller>();
+
+            Text text = controlsSettings.gameObject.AddComponent<Text>();
+            controlsSettings.dashKey = text;
+            controlsSettings.repeatedKey = text;
+
+            Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
+            controlsSettings.movementsDropdown = dropdown;
+
+            yield return null;
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "q");
+            
+            controlsSettings.SetDashControl("z");
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "z");
+
+            controlsSettings.SetDashControl("");
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "z");
+
+            controlsSettings.SetMovementControls(1);
+
+            controlsSettings.SetDashControl("a");
+
+            //Can't change dash control because movementControls is using "a" key
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "z");
+
+            controlsSettings.SetDashControl("B");
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "b");
+        }
     }
 }
