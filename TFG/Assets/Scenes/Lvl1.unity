@@ -397,7 +397,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementsDropdown: {fileID: 1567386454}
   dashKey: {fileID: 648950721}
-  menuKey: {fileID: 0}
   repeatedKey: {fileID: 1079083704}
 --- !u!1 &66224774
 GameObject:

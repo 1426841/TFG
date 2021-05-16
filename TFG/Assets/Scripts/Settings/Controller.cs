@@ -8,15 +8,20 @@ public class Controller : MonoBehaviour
     private string dash = "q";
     private string settingsMenu = "m";
     private Dictionary<string, string> usedKeys;
+    private const string LeftKey = "right";
+    private const string RightKey = "left";
+    private const string JumpKey = "jump";
+    private const string DashKey = "dash";
+    private const string SettingsMenuKey = "settingsMenu";
 
     private void Start()
     {
         usedKeys = new Dictionary<string, string>();
-        usedKeys.Add("right", GetRight());
-        usedKeys.Add("left", GetLeft());
-        usedKeys.Add("jump", GetJump());
-        usedKeys.Add("dash", GetDash());
-        usedKeys.Add("settingsMenu", GetSettingsMenu());
+        usedKeys.Add(LeftKey, GetLeft());
+        usedKeys.Add(RightKey, GetRight());
+        usedKeys.Add(JumpKey, GetJump());
+        usedKeys.Add(DashKey, GetDash());
+        usedKeys.Add(SettingsMenuKey, GetSettingsMenu());
     }
 
     //Getters
@@ -53,29 +58,29 @@ public class Controller : MonoBehaviour
     public void SetLeft(string left)
     {
         this.left = left;
-        usedKeys["left"] = left;
+        usedKeys[LeftKey] = left;
     }
 
     public void SetRight(string right)
     {
         this.right = right;
-        usedKeys["right"] = right;
+        usedKeys[RightKey] = right;
     }
 
     public void SetJump(string jump)
     {
         this.jump = jump;
-        usedKeys["jump"] = jump;
+        usedKeys[JumpKey] = jump;
     }
     public void SetDash(string dash)
     {
         this.dash = dash;
-        usedKeys["dash"] = dash;
+        usedKeys[DashKey] = dash;
     }
 
     public void SetSettingsMenu(string settingsMenu)
     {
         this.settingsMenu = settingsMenu;
-        usedKeys["settingsMenu"] = settingsMenu;
+        usedKeys[SettingsMenuKey] = settingsMenu;
     }
 }

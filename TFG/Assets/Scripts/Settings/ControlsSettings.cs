@@ -3,10 +3,18 @@ using UnityEngine.UI;
 
 public class ControlsSettings : MonoBehaviour
 {
+    private const string ArrowLeftKey = "left";
+    private const string ArrowRightKey = "right";
+    private const string ArrowUpKey = "up";
+    private const string AKey = "a";
+    private const string DKey = "d";
+    private const string WKey = "w";
+
     public Dropdown movementsDropdown;
     public Text dashKey;
     public Text repeatedKey;
     private Controller controller;
+    
 
     void Start()
     {
@@ -18,7 +26,7 @@ public class ControlsSettings : MonoBehaviour
     {
         repeatedKey.gameObject.SetActive(false);
 
-        if (controller.GetRight() == "right")
+        if (controller.GetRight() == ArrowRightKey)
         {
            movementsDropdown.value = 0;
         }
@@ -28,16 +36,16 @@ public class ControlsSettings : MonoBehaviour
     {
         if(selectedMovement == 0)
         {
-            controller.SetRight("right");
-            controller.SetLeft("left");
-            controller.SetJump("up");
+            controller.SetRight(ArrowRightKey);
+            controller.SetLeft(ArrowLeftKey);
+            controller.SetJump(ArrowUpKey);
             repeatedKey.gameObject.SetActive(false);
 
-        } else if (!controller.IsKeyRepeated("d") && !controller.IsKeyRepeated("a") && !controller.IsKeyRepeated("w"))
+        } else if (!controller.IsKeyRepeated(DKey) && !controller.IsKeyRepeated(AKey) && !controller.IsKeyRepeated(WKey))
         {
-            controller.SetRight("d");
-            controller.SetLeft("a");
-            controller.SetJump("w");
+            controller.SetRight(DKey);
+            controller.SetLeft(AKey);
+            controller.SetJump(WKey);
             repeatedKey.gameObject.SetActive(false);
         } else
         {
