@@ -14,10 +14,12 @@ public class SettingsMenu : MonoBehaviour
     {
         if (settingsMenu.activeSelf)
         {
+            Time.timeScale = 1;
             settingsMenu.gameObject.SetActive(false);
         }
         else
         {
+            Time.timeScale = 0;
             settingsMenu.gameObject.SetActive(true);
             graphicsSettings.SelectFirstSetting();
         }
