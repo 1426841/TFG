@@ -13,7 +13,6 @@ namespace Tests
         {
             var gameObject = new GameObject();
             var controlsSettings = gameObject.AddComponent<ControlsSettings>();
-            controlsSettings.gameObject.AddComponent<Controller>();
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
@@ -21,6 +20,10 @@ namespace Tests
 
             Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
             controlsSettings.movementsDropdown = dropdown;
+
+            var controllerObject = new GameObject();
+            var controller = gameObject.AddComponent<Controller>();
+            controlsSettings.controller = controller;
 
             yield return null;
 
@@ -69,7 +72,6 @@ namespace Tests
         {
             var gameObject = new GameObject();
             var controlsSettings = gameObject.AddComponent<ControlsSettings>();
-            controlsSettings.gameObject.AddComponent<Controller>();
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
@@ -77,6 +79,10 @@ namespace Tests
 
             Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
             controlsSettings.movementsDropdown = dropdown;
+
+            var controllerObject = new GameObject();
+            var controller = gameObject.AddComponent<Controller>();
+            controlsSettings.controller = controller;
 
             yield return null;
 

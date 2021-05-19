@@ -13,12 +13,11 @@ public class ControlsSettings : MonoBehaviour
     public Dropdown movementsDropdown;
     public Text dashKey;
     public Text repeatedKey;
-    private Controller controller;
+    public Controller controller;
     
 
     void Start()
     {
-        controller = FindObjectOfType<Controller>();
         dashKey.text = controller.GetDash();
     }
 
