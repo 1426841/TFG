@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
+    private const string MainScene = "Main";
+
     public GameObject settingsMenu;
     public GraphicsSettings graphicsSettings;
 
@@ -29,4 +32,9 @@ public class SettingsMenu : MonoBehaviour
     {
         return settingsMenu.activeSelf;
     } 
+
+    public void ExitLevel()
+    {
+        SceneManager.LoadScene(MainScene);
+    }
 }

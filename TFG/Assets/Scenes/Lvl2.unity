@@ -1315,6 +1315,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2624543546360882646, guid: d3e644eaf055e2e4aba8d46ac3182b15,
+        type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1347143810}
     - target: {fileID: 2624543546613834939, guid: d3e644eaf055e2e4aba8d46ac3182b15,
         type: 3}
       propertyPath: controller
