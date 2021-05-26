@@ -1,43 +1,69 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveSystem : MonoBehaviour
 {
     public const string SaveFilePath = "/SaveFile.json";
 
     [Serializable]
-    public struct SaveFile
+    public class SaveLevel
     {
         public string timerText;
         public float totalTime;
         public int totalCollected;
+        public string level;
+    }
+    [Serializable]
+    public class SaveFile
+    {
+        public List<SaveLevel> saveLevel;
     }
 
     public void Save()
     {
-        SaveFile saveFile = new SaveFile();
+        SaveLevel saveLevel = new SaveLevel();
         Timer timer = FindObjectOfType<Timer>();
-        saveFile.timerText = timer.GetTimerText();
-        saveFile.totalTime = timer.GetTotalTime();
+        saveLevel.timerText = timer.GetTimerText();
+        saveLevel.totalTime = timer.GetTotalTime();
         Collectables collectables = FindObjectOfType<Collectables>();
-        saveFile.totalCollected = collectables.GetTotalCollected();
+        saveLevel.totalCollected = collectables.GetTotalCollected();
+        saveLevel.level = SceneManager.GetActiveScene().name;
+
+        SaveFile saveFile = new SaveFile();
+        saveFile.saveLevel = new List<SaveLevel>();
 
         if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
         {
-            SaveFile oldSaveFile = new SaveFile();
-            oldSaveFile = Load();
-
-            if (saveFile.totalTime > oldSaveFile.totalTime)
+            saveFile = Load();
+            bool newLevel = true;
+            for (int i=0; i < saveFile.saveLevel.Count; i++)
             {
-                saveFile.totalTime = oldSaveFile.totalTime;
-                saveFile.timerText = oldSaveFile.timerText;
+                if(saveLevel.level == saveFile.saveLevel[i].level)
+                {
+                    newLevel = false;
+                    if (saveLevel.totalTime < saveFile.saveLevel[i].totalTime)
+                    {
+                        saveFile.saveLevel[i].totalTime = saveLevel.totalTime;
+                        saveFile.saveLevel[i].timerText = saveLevel.timerText;
+                    }
+
+                    if (saveLevel.totalCollected > saveFile.saveLevel[i].totalCollected)
+                    {
+                        saveFile.saveLevel[i].totalCollected = saveLevel.totalCollected;
+                    }
+                }
             }
 
-            if (saveFile.totalCollected < oldSaveFile.totalCollected)
+            if (newLevel)
             {
-                saveFile.totalCollected = oldSaveFile.totalCollected;
+                saveFile.saveLevel.Add(saveLevel);
             }
+        } else
+        {
+            saveFile.saveLevel.Add(saveLevel);
         }
 
         string json = JsonUtility.ToJson(saveFile);
