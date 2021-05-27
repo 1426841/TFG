@@ -79,4 +79,17 @@ public class SaveSystem : MonoBehaviour
 
         return saveFile;
     }
+
+    public int getCompletedLevels()
+    {
+        if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
+        {
+            SaveFile saveFile = Load();
+            return saveFile.saveLevel.Count;
+        }
+        else
+        {
+            return 0;
+        } 
+    }
 }
