@@ -171,5 +171,56 @@ namespace Tests
 
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
         }
+
+        [UnityTest]
+        public IEnumerator GetLevelTotalCollected()
+        {
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+
+            SceneManager.LoadScene("Lvl1");
+            yield return null;
+
+            var gameObject = new GameObject();
+            var saveSystem = gameObject.AddComponent<SaveSystem>();
+            saveSystem.gameObject.AddComponent<Timer>();
+            saveSystem.gameObject.AddComponent<Text>();
+            saveSystem.gameObject.AddComponent<Collectables>();
+
+            var gameObjectCollect = new GameObject();
+            var collectables = gameObjectCollect.AddComponent<Collectables>();
+            collectables.gameObject.AddComponent<Text>();
+
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(1), "0");
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(2), "0");
+
+            yield return null;
+            collectables.gameObject.GetComponent<Collectables>().Collect();
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(1), "1");
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(2), "0");
+
+            collectables.gameObject.GetComponent<Collectables>().Collect();
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(1), "2");
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(2), "0");
+
+            SceneManager.LoadScene("Lvl2");
+            yield return null;
+
+            var CollectGameObject = new GameObject();
+            var Lvl2Collectables = CollectGameObject.AddComponent<Collectables>();
+            Lvl2Collectables.gameObject.AddComponent<Text>();
+            yield return null;
+
+            Lvl2Collectables.gameObject.GetComponent<Collectables>().Collect();
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(1), "2");
+            Assert.AreEqual(saveSystem.GetLevelTotalCollected(2), "1");
+
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+        }
     }
 }

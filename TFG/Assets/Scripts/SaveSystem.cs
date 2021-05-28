@@ -107,4 +107,19 @@ public class SaveSystem : MonoBehaviour
         }
         return levelTime;
     }
+
+    public string GetLevelTotalCollected(int level)
+    {
+        string levelCollected = "0";
+        if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
+        {
+            SaveFile saveFile = Load();
+
+            if(level <= saveFile.saveLevel.Count)
+            {
+                return saveFile.saveLevel[level-1].totalCollected.ToString();
+            }
+        }
+        return levelCollected;
+    }
 }
