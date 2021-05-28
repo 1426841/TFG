@@ -130,5 +130,46 @@ namespace Tests
 
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
         }
+
+        [UnityTest]
+        public IEnumerator GetLevelTime()
+        {
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+
+            SceneManager.LoadScene("Lvl1");
+            yield return null;
+
+            var gameObject = new GameObject();
+            var saveSystem = gameObject.AddComponent<SaveSystem>();
+            saveSystem.gameObject.AddComponent<Timer>();
+            saveSystem.gameObject.AddComponent<Text>();
+            saveSystem.gameObject.AddComponent<Collectables>();
+
+            Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,0");
+            Assert.AreEqual(saveSystem.GetLevelTime(2), "0:0,0");
+
+            yield return new WaitForSeconds(0.2f);
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,2");
+            Assert.AreEqual(saveSystem.GetLevelTime(2), "0:0,0");
+
+            saveSystem.gameObject.GetComponent<Timer>().ResetTime();
+
+            yield return new WaitForSeconds(0.1f);
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,1");
+            Assert.AreEqual(saveSystem.GetLevelTime(2), "0:0,0");
+
+            SceneManager.LoadScene("Lvl2");
+            yield return new WaitForSeconds(0.2f);
+            saveSystem.Save();
+
+            Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,1");
+            Assert.AreEqual(saveSystem.GetLevelTime(2), "0:0,2");
+
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+        }
     }
 }

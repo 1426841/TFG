@@ -8,7 +8,7 @@ public class LevelBarrier : MonoBehaviour
 
     void Start()
     {
-        if (levelRequired <= saveSystem.getCompletedLevels())
+        if (levelRequired <= saveSystem.GetCompletedLevels())
         {
             barrier.gameObject.SetActive(false);
         }

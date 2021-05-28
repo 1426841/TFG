@@ -80,7 +80,7 @@ public class SaveSystem : MonoBehaviour
         return saveFile;
     }
 
-    public int getCompletedLevels()
+    public int GetCompletedLevels()
     {
         if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
         {
@@ -91,5 +91,20 @@ public class SaveSystem : MonoBehaviour
         {
             return 0;
         } 
+    }
+
+    public string GetLevelTime(int level)
+    {
+        string levelTime = "0:0,0";
+        if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
+        {
+            SaveFile saveFile = Load();
+
+            if(level <= saveFile.saveLevel.Count)
+            {
+                return saveFile.saveLevel[level-1].timerText;
+            }
+        }
+        return levelTime;
     }
 }
