@@ -936,6 +936,7 @@ GameObject:
   - component: {fileID: 2096919572}
   - component: {fileID: 2096919571}
   - component: {fileID: 2096919570}
+  - component: {fileID: 2096919573}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -1005,7 +1006,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2096919571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2096919573}
+        m_MethodName: CreateNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2096919571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,3 +1055,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096919568}
   m_CullTransparentMesh: 0
+--- !u!114 &2096919573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096919568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0cec9c2d0d7d7498cf5498a30eec36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
