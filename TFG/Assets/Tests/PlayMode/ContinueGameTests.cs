@@ -20,6 +20,9 @@ namespace Tests
             var gameObject = new GameObject();
             var continueGame = gameObject.AddComponent<ContinueGame>();
 
+            var buttonObject = new GameObject();
+            continueGame.continueButton = buttonObject;
+
             var saveObject = new GameObject();
             var saveSystem = saveObject.AddComponent<SaveSystem>();
             saveSystem.gameObject.AddComponent<Timer>();
@@ -32,14 +35,48 @@ namespace Tests
             yield return null;
             saveSystem.Save();
 
-
             Assert.AreNotEqual(SceneManager.GetActiveScene().name, "Main");
-
 
             continueGame.Continue();
             yield return null;
 
             Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
+
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+        }
+
+        [UnityTest]
+        public IEnumerator Start()
+        {
+            var gameObject = new GameObject();
+            var continueGame = gameObject.AddComponent<ContinueGame>();
+
+            var buttonObject = new GameObject();
+            continueGame.continueButton = buttonObject;
+
+            var saveObject = new GameObject();
+            var saveSystem = saveObject.AddComponent<SaveSystem>();
+            saveSystem.gameObject.AddComponent<Timer>();
+            saveSystem.gameObject.AddComponent<Text>();
+            saveSystem.gameObject.AddComponent<Collectables>();
+
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
+            Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
+
+            yield return null;
+            Assert.IsFalse(continueGame.continueButton.activeSelf);
+            saveSystem.Save();
+
+            //Create ContinueGame gameObject again to call Start
+            continueGame = gameObject.AddComponent<ContinueGame>();
+            var buttonObject2 = new GameObject();
+            continueGame.continueButton = buttonObject2;
+
+            yield return null;
+            Assert.IsTrue(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
+            Assert.IsTrue(continueGame.continueButton.activeSelf);
+
+            File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
         }
     }
 }
