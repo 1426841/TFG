@@ -8,16 +8,17 @@ using UnityEngine.UI;
 
 namespace Tests
 {
-    public class NewGameTests
+    public class ContinueGameTests
     {
+
         [UnityTest]
-        public IEnumerator CreateNewGame()
+        public IEnumerator Continue()
         {
             SceneManager.LoadScene("Initial");
             yield return null;
 
             var gameObject = new GameObject();
-            var newGame = gameObject.AddComponent<NewGame>();
+            var continueGame = gameObject.AddComponent<ContinueGame>();
 
             var saveObject = new GameObject();
             var saveSystem = saveObject.AddComponent<SaveSystem>();
@@ -31,21 +32,13 @@ namespace Tests
             yield return null;
             saveSystem.Save();
 
-            Assert.IsTrue(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
+
             Assert.AreNotEqual(SceneManager.GetActiveScene().name, "Main");
 
-            //Deletes old save
-            newGame.CreateNewGame();
+
+            continueGame.Continue();
             yield return null;
 
-            Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
-            Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
-
-            //Creates new game but there is no old save
-            newGame.CreateNewGame();
-            yield return null;
-
-            Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
             Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
         }
     }
