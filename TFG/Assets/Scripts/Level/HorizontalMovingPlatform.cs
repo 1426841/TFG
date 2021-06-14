@@ -4,6 +4,7 @@ public class HorizontalMovingPlatform : HorizontalMovingObject
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // The character moves along with the platform
         collision.collider.transform.SetParent(transform);
     }
 

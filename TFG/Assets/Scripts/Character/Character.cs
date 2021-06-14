@@ -52,6 +52,7 @@ public class Character :  MonoBehaviour
             action = Respawn;
         }
 
+        // Performs the selected action in CharacterControl
         switch (action)
         {
             case MoveRight:
@@ -87,6 +88,8 @@ public class Character :  MonoBehaviour
                 {
                     dashAudio.Play();
                 }
+
+                // Dash goes to the right or to the left depending on the initial orientation of the character
                 if (characterSpriteRenderer.flipX == false)
                 {
                     rigidBody.velocity = new Vector2(Speed * 2, 0);
@@ -111,6 +114,7 @@ public class Character :  MonoBehaviour
 
     private void LateUpdate()
     {
+        // The camera follows the character
         camera.transform.position = new Vector3(transform.position.x, 0, -1);
     }
 

@@ -16,6 +16,7 @@ public class HorizontalMovingObject : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        // The object repeatedly moves from the InitialPosition to the FinalPosition and vice versa
         if (transform.position == InitialPosition.position)
         {
             movePosition = FinalPosition.position;

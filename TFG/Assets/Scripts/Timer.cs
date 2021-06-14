@@ -39,6 +39,7 @@ public class Timer : MonoBehaviour
         {
             totalTime = Time.time - initialTime;
 
+            // Converts totalTime to minutes and seconds
             float minutes = (int)totalTime / 60;
             float seconds = totalTime % 60;
 

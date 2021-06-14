@@ -41,15 +41,19 @@ public class SaveSystem : MonoBehaviour
             bool newLevel = true;
             for (int i=0; i < saveFile.saveLevel.Count; i++)
             {
-                if(saveLevel.level == saveFile.saveLevel[i].level)
+                // If the current level has been completed before, 
+                // compares the values saved in the saveFile with the new values
+                if (saveLevel.level == saveFile.saveLevel[i].level)
                 {
                     newLevel = false;
+                    // If saveLevel has less time, saves the new value
                     if (saveLevel.totalTime < saveFile.saveLevel[i].totalTime)
                     {
                         saveFile.saveLevel[i].totalTime = saveLevel.totalTime;
                         saveFile.saveLevel[i].timerText = saveLevel.timerText;
                     }
 
+                    // If saveLevel has more collectables collected, saves the new value
                     if (saveLevel.totalCollected > saveFile.saveLevel[i].totalCollected)
                     {
                         saveFile.saveLevel[i].totalCollected = saveLevel.totalCollected;
@@ -57,6 +61,8 @@ public class SaveSystem : MonoBehaviour
                 }
             }
 
+            // If the current level has been completed for the first time, 
+            // saves the new values directly without checking the values in the saveFile
             if (newLevel)
             {
                 saveFile.saveLevel.Add(saveLevel);
@@ -100,7 +106,8 @@ public class SaveSystem : MonoBehaviour
         {
             SaveFile saveFile = Load();
 
-            if(level <= saveFile.saveLevel.Count)
+            // Checks if the level has already been completed
+            if (level <= saveFile.saveLevel.Count)
             {
                 return saveFile.saveLevel[level-1].timerText;
             }
@@ -115,7 +122,8 @@ public class SaveSystem : MonoBehaviour
         {
             SaveFile saveFile = Load();
 
-            if(level <= saveFile.saveLevel.Count)
+            // Checks if the level has already been completed
+            if (level <= saveFile.saveLevel.Count)
             {
                 return saveFile.saveLevel[level-1].totalCollected.ToString();
             }

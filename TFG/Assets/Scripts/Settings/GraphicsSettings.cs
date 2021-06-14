@@ -19,11 +19,13 @@ public class GraphicsSettings : MonoBehaviour
 
         for (int i = 0; i < screenResolutions.Length; i++)
         {
+            // Only adds resolutions that have 59 or 60 Hz
             if((screenResolutions[i].refreshRate == 59) || (screenResolutions[i].refreshRate == 60))
             {
                 optionsDropdown.Add(screenResolutions[i].ToString());
             }
             
+            // Searches the current resolution in screenResolutions
             if(screenResolutions[i].width == Screen.width && screenResolutions[i].height == Screen.height && 
                 (screenResolutions[i].refreshRate == Screen.currentResolution.refreshRate || screenResolutions[i].refreshRate+1 == Screen.currentResolution.refreshRate))
             {

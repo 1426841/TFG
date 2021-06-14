@@ -6,11 +6,17 @@ public class CharacterCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        isColliding = true;
+        if (!collider.isTrigger)
+        {
+            isColliding = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        isColliding = false;
+        if (!collider.isTrigger)
+        {
+            isColliding = false;
+        }
     }
 }

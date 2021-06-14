@@ -17,11 +17,13 @@ public class SettingsMenu : MonoBehaviour
     {
         if (settingsMenu.activeSelf)
         {
+            // If the settings menu is already opened, closes the menu and resumes the game
             Time.timeScale = 1;
             settingsMenu.gameObject.SetActive(false);
         }
         else
         {
+            // If the settings menu is closed, opens the settings menu and pauses the game
             Time.timeScale = 0;
             settingsMenu.gameObject.SetActive(true);
             graphicsSettings.SelectFirstSetting();

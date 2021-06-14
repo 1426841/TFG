@@ -44,6 +44,7 @@ public class CharacterControl : MonoBehaviour
                 action = Character.NoMove;
             }
 
+            // The character can only jump when he collides with something
             if (Input.GetKey(controller.GetJump()) && CharacterCollider.isColliding)
             {
                 action = Character.Jump;
@@ -55,6 +56,7 @@ public class CharacterControl : MonoBehaviour
                 action = Character.Dash;
             }
 
+            // If the ability is still being used, keeps the ability as the current action
             if (ability.IsUsingAbility())
             {
                 action = ability.GetAbility();

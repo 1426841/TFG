@@ -25,6 +25,8 @@ public class ControlsSettings : MonoBehaviour
     {
         repeatedKey.gameObject.SetActive(false);
 
+        // When WASD movement is selected but can't be used because at least one key is repeated, 
+        // it selects the arrow keys movement from the dropdown
         if (controller.GetRight() == ArrowRightKey)
         {
            movementsDropdown.value = 0;
@@ -54,6 +56,7 @@ public class ControlsSettings : MonoBehaviour
 
     public void SetDashControl(string key)
     {
+        // Converts the key to lowercase and checks that it's not empty or repeated
         key = key.ToLower();
         if (key != "" && !controller.IsKeyRepeated(key))
         {

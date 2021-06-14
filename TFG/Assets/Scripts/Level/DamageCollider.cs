@@ -19,6 +19,7 @@ public class DamageCollider : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        // When in contact, it deals damage every 2 seconds
         if (timeStayed < MaxTimeStay)
         {
             timeStayed += Time.deltaTime;

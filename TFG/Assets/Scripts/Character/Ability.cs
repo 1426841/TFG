@@ -23,20 +23,21 @@ public class Ability : MonoBehaviour
         {
             timeAbility += Time.deltaTime;
             if (timeAbility >= MaxAbilityTime)
-            {
+            {   
+                // Ability finished, substracts one ability point and starts cooldown
                 usingAbility = false;
                 --abilityPoints;
 
                 if (abilityPoints == 2)
                 {
-                    ActivateHearts(false, true, true, true, false, false);
+                    ActivateAbilityPoints(false, true, true, true, false, false);
                 } else if (abilityPoints == 1)
                 {
-                    ActivateHearts(false, false, true, true, true, false);
+                    ActivateAbilityPoints(false, false, true, true, true, false);
                 }
                 else
                 {
-                    ActivateHearts(false, false, false, true, true, true);
+                    ActivateAbilityPoints(false, false, false, true, true, true);
                 }
 
                 timeAbility = 0;
@@ -49,6 +50,7 @@ public class Ability : MonoBehaviour
             timeCoolDown += Time.deltaTime;
             if (timeCoolDown >= MaxAbilityTime)
             {
+                // CoolDown finished and abilities can be used again
                 coolDown = false;
                 timeCoolDown = 0;
             }
@@ -90,10 +92,10 @@ public class Ability : MonoBehaviour
         timeCoolDown = 0;
         usingAbility = false;
         coolDown = false;
-        ActivateHearts(true, true, true, false, false, false);
+        ActivateAbilityPoints(true, true, true, false, false, false);
     }
 
-    private void ActivateHearts(bool abilityPoint1, bool abilityPoint2, bool abilityPoint3, bool noAbilityPoint1, bool noAbilityPoint2, bool noAbilityPoint3)
+    private void ActivateAbilityPoints(bool abilityPoint1, bool abilityPoint2, bool abilityPoint3, bool noAbilityPoint1, bool noAbilityPoint2, bool noAbilityPoint3)
     {
         this.abilityPoint1.gameObject.SetActive(abilityPoint1);
         this.abilityPoint2.gameObject.SetActive(abilityPoint2);
