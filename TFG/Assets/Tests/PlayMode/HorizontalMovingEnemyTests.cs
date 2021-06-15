@@ -26,6 +26,7 @@ namespace Tests
 
             float originalPosition = enemy.transform.position.x;
 
+            // Tests the movement of the enemy
             yield return new WaitForSeconds(1);
             Assert.Less(enemy.transform.position.x, originalPosition);
 

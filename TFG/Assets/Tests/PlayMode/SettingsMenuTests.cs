@@ -33,6 +33,7 @@ namespace Tests
 
             yield return null;
 
+            //Exits level and loads Main scene
             Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
         }
     }

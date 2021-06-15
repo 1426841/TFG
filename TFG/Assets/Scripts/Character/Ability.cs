@@ -2,7 +2,9 @@
 
 public class Ability : MonoBehaviour
 {
-    private const float MaxAbilityTime = 0.35f;
+    private const float DashAbilityTime = 0.35f;
+    private const float HealAbilityTime = 0;
+    private const float MaxCooldownTime = 0.35f;
 
     public GameObject abilityPoint1, abilityPoint2, abilityPoint3, noAbilityPoint1, noAbilityPoint2, noAbilityPoint3;
     private int abilityPoints;
@@ -11,6 +13,7 @@ public class Ability : MonoBehaviour
     private bool usingAbility;
     private bool coolDown;
     private string ability;
+    private float maxAbilityTime;
 
     void Start()
     {
@@ -22,7 +25,7 @@ public class Ability : MonoBehaviour
         if (usingAbility)
         {
             timeAbility += Time.deltaTime;
-            if (timeAbility >= MaxAbilityTime)
+            if (timeAbility >= maxAbilityTime)
             {   
                 // Ability finished, substracts one ability point and starts cooldown
                 usingAbility = false;
@@ -48,7 +51,7 @@ public class Ability : MonoBehaviour
         else if (coolDown)
         {
             timeCoolDown += Time.deltaTime;
-            if (timeCoolDown >= MaxAbilityTime)
+            if (timeCoolDown >= MaxCooldownTime)
             {
                 // CoolDown finished and abilities can be used again
                 coolDown = false;
@@ -61,6 +64,13 @@ public class Ability : MonoBehaviour
     {
         this.ability = ability;
         usingAbility = true;
+        maxAbilityTime = DashAbilityTime;
+
+        if (ability == Character.Heal)
+        {
+            maxAbilityTime = HealAbilityTime;
+        }
+
     }
 
     public string GetAbility()

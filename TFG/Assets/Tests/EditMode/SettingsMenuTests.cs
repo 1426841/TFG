@@ -23,6 +23,7 @@ namespace Tests
             graphicsSettings.eventSystem = eventSystem;
             settingsMenu.graphicsSettings = graphicsSettings;
 
+            // Checks if settingsMenu is opened or closed
             Assert.True(settingsMenu.settingsMenu.activeSelf);
 
             settingsMenu.OpenCloseSettings();

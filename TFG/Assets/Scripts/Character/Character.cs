@@ -8,6 +8,7 @@ public class Character :  MonoBehaviour
     public const string Jump = "jump";
     public const string Respawn = "respawn";
     public const string Dash = "dash";
+    public const string Heal = "heal";
     private const string IsMoving = "isMoving";
     private const string IsJumping = "isJumping";
     private const float Speed = 7;
@@ -16,6 +17,7 @@ public class Character :  MonoBehaviour
     private const float InitialPositionX = -7;
     private const float InitialPositionY = -3;
     private const float InitialPositionZ = 0;
+    private const int MaxHearts = 3;
 
     public GameObject heart1, heart2, heart3, noHeart1, noHeart2, noHeart3;
     public AudioSource jumpAudio;
@@ -34,7 +36,7 @@ public class Character :  MonoBehaviour
         action = NoMove;
         characterSpriteRenderer = GetComponent<SpriteRenderer>();
         characterAnimator = GetComponent<Animator>();
-        hearts = 3;
+        hearts = MaxHearts;
         ActivateHearts(true, true, true, false, false, false);
         camera = FindObjectOfType<Camera>();
         respawnPosition = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
@@ -79,7 +81,7 @@ public class Character :  MonoBehaviour
                 break;
             case Respawn:
                 rigidBody.transform.position = respawnPosition;
-                hearts = 3;
+                hearts = MaxHearts;
                 ActivateHearts(true, true, true, false, false, false);
                 break;
             case Dash:
@@ -98,6 +100,9 @@ public class Character :  MonoBehaviour
                 {
                     rigidBody.velocity = new Vector2(-Speed * 2, 0);
                 }
+                break;
+            case Heal:
+                HealHearts();
                 break;
             default:
                 Debug.LogWarning("Wrong character action!");
@@ -146,5 +151,20 @@ public class Character :  MonoBehaviour
     public void setRespawnPosition(Vector3 respawnPosition)
     {
         this.respawnPosition = respawnPosition;
+    }
+
+    private void HealHearts()
+    {
+        if (hearts < MaxHearts)
+        {
+            hearts = ++hearts;
+        }
+
+        if (hearts == MaxHearts)
+        {
+            ActivateHearts(true, true, true, false, false, false);
+        } else {
+            ActivateHearts(false, true, true, true, false, false);
+        }
     }
 }

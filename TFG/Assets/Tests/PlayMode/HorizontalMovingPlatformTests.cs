@@ -25,6 +25,7 @@ namespace Tests
 
             float originalPosition = platform.transform.position.x;
 
+            // Tests the movement of the platform
             yield return new WaitForSeconds(1);
             Assert.Less(platform.transform.position.x, originalPosition);
 

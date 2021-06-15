@@ -40,6 +40,7 @@ namespace Tests
             continueGame.Continue();
             yield return null;
 
+            // Continue -> loads Main scene
             Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
 
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
@@ -64,6 +65,7 @@ namespace Tests
             Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
 
             yield return null;
+            // There is no save -> Can't continue
             Assert.IsFalse(continueGame.continueButton.activeSelf);
             saveSystem.Save();
 
@@ -74,6 +76,7 @@ namespace Tests
 
             yield return null;
             Assert.IsTrue(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
+            // There is save -> Can continue
             Assert.IsTrue(continueGame.continueButton.activeSelf);
 
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
