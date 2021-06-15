@@ -12,6 +12,7 @@ public class ControlsSettings : MonoBehaviour
 
     public Dropdown movementsDropdown;
     public Text dashKey;
+    public Text healKey;
     public Text repeatedKey;
     public Controller controller;
     
@@ -19,6 +20,7 @@ public class ControlsSettings : MonoBehaviour
     void Start()
     {
         dashKey.text = controller.GetDash();
+        healKey.text = controller.GetHeal();
     }
 
     private void OnDisable()
@@ -62,6 +64,17 @@ public class ControlsSettings : MonoBehaviour
         {
             controller.SetDash(key);
             dashKey.text = controller.GetDash();
+        }
+    }
+
+    public void SetHealControl(string key)
+    {
+        // Converts the key to lowercase and checks that it's not empty or repeated
+        key = key.ToLower();
+        if (key != "" && !controller.IsKeyRepeated(key))
+        {
+            controller.SetHeal(key);
+            healKey.text = controller.GetHeal();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Tests
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
+            controlsSettings.healKey = text;
             controlsSettings.repeatedKey = text;
 
             Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
@@ -75,6 +76,7 @@ namespace Tests
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
+            controlsSettings.healKey = text;
             controlsSettings.repeatedKey = text;
 
             Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
@@ -103,8 +105,60 @@ namespace Tests
             //Can't change dash control because movementControls is using "a" key
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "z");
 
+            // Converts the key to lowercase
             controlsSettings.SetDashControl("B");
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "b");
+
+            controlsSettings.SetDashControl("e");
+
+            //Can't change dash control because heal is using "e" key
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "b");
+        }
+
+        public IEnumerator SetHealControl()
+        {
+            var gameObject = new GameObject();
+            var controlsSettings = gameObject.AddComponent<ControlsSettings>();
+
+            Text text = controlsSettings.gameObject.AddComponent<Text>();
+            controlsSettings.dashKey = text;
+            controlsSettings.healKey = text;
+            controlsSettings.repeatedKey = text;
+
+            Dropdown dropdown = controlsSettings.gameObject.AddComponent<Dropdown>();
+            controlsSettings.movementsDropdown = dropdown;
+
+            var controllerObject = new GameObject();
+            var controller = gameObject.AddComponent<Controller>();
+            controlsSettings.controller = controller;
+
+            yield return null;
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "e");
+
+            controlsSettings.SetHealControl("z");
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "z");
+
+            controlsSettings.SetHealControl("");
+
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "z");
+
+            controlsSettings.SetMovementControls(1);
+
+            controlsSettings.SetHealControl("a");
+
+            //Can't change heal control because movementControls is using "a" key
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "z");
+
+            // Converts the key to lowercase
+            controlsSettings.SetHealControl("B");
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "b");
+
+            controlsSettings.SetHealControl("q");
+
+            //Can't change heal control because dash is using "q" key
+            Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "b");
         }
     }
 }
