@@ -6,12 +6,14 @@ public class Controller : MonoBehaviour
     private string right = "right";
     private string jump = "up";
     private string dash = "q";
+    private string heal = "e";
     private string settingsMenu = "m";
     private Dictionary<string, string> usedKeys;
     private const string LeftKey = "right";
     private const string RightKey = "left";
     private const string JumpKey = "jump";
     private const string DashKey = "dash";
+    private const string HealKey = "heal";
     private const string SettingsMenuKey = "settingsMenu";
 
     private void Start()
@@ -21,6 +23,7 @@ public class Controller : MonoBehaviour
         usedKeys.Add(RightKey, GetRight());
         usedKeys.Add(JumpKey, GetJump());
         usedKeys.Add(DashKey, GetDash());
+        usedKeys.Add(HealKey, GetHeal());
         usedKeys.Add(SettingsMenuKey, GetSettingsMenu());
     }
 
@@ -42,6 +45,11 @@ public class Controller : MonoBehaviour
     public string GetDash()
     {
         return dash;
+    }
+
+    public string GetHeal()
+    {
+        return heal;
     }
 
     public string GetSettingsMenu()
@@ -76,6 +84,12 @@ public class Controller : MonoBehaviour
     {
         this.dash = dash;
         usedKeys[DashKey] = dash;
+    }
+
+    public void SetHeal(string heal)
+    {
+        this.heal = heal;
+        usedKeys[HealKey] = heal;
     }
 
     public void SetSettingsMenu(string settingsMenu)

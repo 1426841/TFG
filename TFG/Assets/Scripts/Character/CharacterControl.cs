@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class CharacterControl : MonoBehaviour
 {
     public const float RespawnPosition = -5;
+    private const string UnlockLevel = "Lvl7";
     
     private Controller controller;
     private Character character;
@@ -57,7 +58,7 @@ public class CharacterControl : MonoBehaviour
         }
 
         //Ability unlocked only at level 7
-        if (Input.GetKey("w") && ability.CanUseAbility() && SceneManager.GetActiveScene().name == "Lvl7")
+        if (Input.GetKey(controller.GetHeal()) && ability.CanUseAbility() && SceneManager.GetActiveScene().name == UnlockLevel)
         {
             ability.UseAbility(Character.Heal);
             action = Character.Heal;
