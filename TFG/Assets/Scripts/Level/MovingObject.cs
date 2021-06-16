@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HorizontalMovingObject : MonoBehaviour
+public class MovingObject : MonoBehaviour
 {
     private const float ObjectSpeed = 3;
 

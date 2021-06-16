@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HorizontalMovingPlatform : HorizontalMovingObject
+public class MovingPlatform : MovingObject
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {

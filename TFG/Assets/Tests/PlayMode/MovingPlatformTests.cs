@@ -5,13 +5,13 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class HorizontalMovingPlatformTests
+    public class MovingPlatformTests
     {   
         [UnityTest]
-        public IEnumerator HorizontalMovingPlatForm()
+        public IEnumerator MovingPlatform()
         {
             var platformObject = new GameObject();
-            var platform = platformObject.AddComponent<HorizontalMovingPlatform>();
+            var platform = platformObject.AddComponent<MovingPlatform>();
 
             GameObject initialObject = new GameObject();
             Transform initialTransform = initialObject.transform;
@@ -37,6 +37,15 @@ namespace Tests
 
             yield return new WaitForSeconds(1);
             Assert.AreEqual((int)platform.transform.position.x,(int) originalPosition);
+
+            platform.InitialPosition.position = platform.transform.position;
+            platform.FinalPosition.position = new Vector3(0, 3);
+
+            yield return new WaitForSeconds(1);
+            Assert.Greater(platform.transform.position.y, platform.InitialPosition.position.y);
+
+            yield return new WaitForSeconds(1);
+            Assert.AreEqual((int)platform.transform.position.y, (int)platform.InitialPosition.position.y);
         }
     }
 }

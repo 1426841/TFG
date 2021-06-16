@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HorizontalMovingEnemy : HorizontalMovingObject
+public class MovingEnemy : MovingObject
 {
     private SpriteRenderer enemySpriteRenderer;
 

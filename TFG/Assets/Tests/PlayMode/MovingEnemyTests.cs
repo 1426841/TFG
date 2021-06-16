@@ -5,13 +5,13 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class HorizontalMovingEnemyTests
+    public class MovingEnemyTests
     {
         [UnityTest]
-        public IEnumerator HorizontalMovingEnemy()
+        public IEnumerator MovingEnemy()
         {
             var enemyObject = new GameObject();
-            var enemy = enemyObject.AddComponent<HorizontalMovingEnemy>();
+            var enemy = enemyObject.AddComponent<MovingEnemy>();
             enemy.gameObject.AddComponent<SpriteRenderer>();
 
             GameObject initialObject = new GameObject();
@@ -24,20 +24,29 @@ namespace Tests
             enemy.InitialPosition.position = new Vector3(-3, 0);
             enemy.FinalPosition.position = new Vector3(3, 0);
 
-            float originalPosition = enemy.transform.position.x;
+            float xOriginalPosition = enemy.transform.position.x;
 
             // Tests the movement of the enemy
             yield return new WaitForSeconds(1);
-            Assert.Less(enemy.transform.position.x, originalPosition);
+            Assert.Less(enemy.transform.position.x, xOriginalPosition);
 
             yield return new WaitForSeconds(1);
-            Assert.AreEqual((int)enemy.transform.position.x, (int)originalPosition);
+            Assert.AreEqual((int)enemy.transform.position.x, (int)xOriginalPosition);
 
             yield return new WaitForSeconds(1);
-            Assert.Greater(enemy.transform.position.x, originalPosition);
+            Assert.Greater(enemy.transform.position.x, xOriginalPosition);
 
             yield return new WaitForSeconds(1);
-            Assert.AreEqual((int)enemy.transform.position.x, (int)originalPosition);
+            Assert.AreEqual((int)enemy.transform.position.x, (int)xOriginalPosition);
+
+            enemy.InitialPosition.position = enemy.transform.position;
+            enemy.FinalPosition.position = new Vector3(0,3);
+
+            yield return new WaitForSeconds(1);
+            Assert.Greater(enemy.transform.position.y, enemy.InitialPosition.position.y);
+
+            yield return new WaitForSeconds(1);
+            Assert.AreEqual((int)enemy.transform.position.y, (int)enemy.InitialPosition.position.y);
         }
     }
 }
