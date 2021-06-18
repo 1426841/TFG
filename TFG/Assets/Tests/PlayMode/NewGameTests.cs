@@ -29,6 +29,16 @@ namespace Tests
             saveSystem.gameObject.AddComponent<Text>();
             saveSystem.gameObject.AddComponent<Collectables>();
 
+            var newGameButton = new GameObject();
+            var continueGameButton = new GameObject();
+            var exitGameButton = new GameObject();
+            var rawImage = new GameObject();
+            newGame.newGamebutton = newGameButton;
+            newGame.continueGameButton = continueGameButton;
+            newGame.exitGameButton = exitGameButton;
+            newGame.rawImage = rawImage;
+            newGame.rawImage.SetActive(false);
+
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
             Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
 
@@ -38,6 +48,11 @@ namespace Tests
             Assert.IsTrue(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
             Assert.AreNotEqual(SceneManager.GetActiveScene().name, "Main");
 
+            Assert.IsTrue(newGame.newGamebutton.activeSelf);
+            Assert.IsTrue(newGame.continueGameButton.activeSelf);
+            Assert.IsTrue(newGame.exitGameButton.activeSelf);
+            Assert.IsFalse(newGame.rawImage.activeSelf);
+
             //Deletes old save
             newGame.CreateNewGame();
             Assert.IsFalse(newGame.videoPlayer.isPlaying);
@@ -46,6 +61,13 @@ namespace Tests
             Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
 
             yield return new WaitForSeconds(5);
+
+            //Disables buttons and plays video
+            Assert.IsFalse(newGame.newGamebutton.activeSelf);
+            Assert.IsFalse(newGame.continueGameButton.activeSelf);
+            Assert.IsFalse(newGame.exitGameButton.activeSelf);
+            Assert.IsTrue(newGame.rawImage.activeSelf);
+
             Assert.IsTrue(newGame.videoPlayer.isPlaying);
 
             yield return new WaitForSeconds(5);
@@ -53,6 +75,16 @@ namespace Tests
 
             SceneManager.LoadScene("Initial");
             yield return null;
+
+            var newGameButton2 = new GameObject();
+            var continueGameButton2 = new GameObject();
+            var exitGameButton2 = new GameObject();
+            var rawImage2 = new GameObject();
+            newGame.newGamebutton = newGameButton2;
+            newGame.continueGameButton = continueGameButton2;
+            newGame.exitGameButton = exitGameButton2;
+            newGame.rawImage = rawImage2;
+            newGame.rawImage.SetActive(false);
 
             videoPlayer = GameObject.Find("Video Player");
             newGame.videoPlayer = videoPlayer.GetComponent<VideoPlayer>();

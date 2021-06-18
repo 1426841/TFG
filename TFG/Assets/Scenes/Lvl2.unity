@@ -929,20 +929,11 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 99, y: 1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 7
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1
   - first: {x: 100, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 8
+      m_TileIndex: 10
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -974,6 +965,33 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: 100, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 10
+      m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1
+  - first: {x: 99, y: 3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 7
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1
+  - first: {x: 100, y: 3, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 9
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 9
@@ -996,7 +1014,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: fab0a0c48e9141e439b7979e2c6a10f7, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c04a93323bc5c284eb6074a9607cbc5c, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: a118b011d6264eb4ca79dd9a8b9d3684, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 23907083ed7835143b9b33a895abb07d, type: 2}
@@ -1033,7 +1051,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -4715475944828090153, guid: 527d5af000724784d94edccaf0f04784,
       type: 3}
-  - m_RefCount: 3
+  - m_RefCount: 5
     m_Data: {fileID: 7011476422722416607, guid: 527d5af000724784d94edccaf0f04784,
       type: 3}
   - m_RefCount: 5
@@ -1052,7 +1070,7 @@ Tilemap:
     m_Data: {fileID: -6927532191428556736, guid: 527d5af000724784d94edccaf0f04784,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 81
+  - m_RefCount: 83
     m_Data:
       e00: 1
       e01: 0
@@ -1071,13 +1089,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 81
+  - m_RefCount: 83
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -13, y: -5, z: 0}
-  m_Size: {x: 119, y: 8, z: 1}
+  m_Size: {x: 119, y: 9, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1124,6 +1142,12 @@ CompositeCollider2D:
       - X: -40000000
         Y: -50000000
       - X: -40000000
+        Y: -40000100
+      - X: -50000041
+        Y: -40000100
+      - X: -50000100
+        Y: -40000041
+      - X: -50000100
         Y: -40000000
       - X: -100000000
         Y: -40000000
@@ -1387,7 +1411,7 @@ CompositeCollider2D:
     m_Paths:
     - - {x: -13.00001, y: -4.9999747}
       - {x: -4, y: -4.999971}
-      - {x: -4.000029, y: -4}
+      - {x: -4.000029, y: -4.00001}
       - {x: -10, y: -3.9999704}
       - {x: -9.999961, y: 2.06249}
       - {x: -9.187487, y: 2.0624993}
@@ -2214,7 +2238,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -7.9054036, y: -1.4256191}
+  m_Offset: {x: -7.9054036, y: 0.059741974}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2225,7 +2249,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.20082, y: 4.9016953}
+  m_Size: {x: 2.20082, y: 7.8724174}
   m_EdgeRadius: 0
 --- !u!4 &857861897
 Transform:

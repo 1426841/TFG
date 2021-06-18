@@ -219,7 +219,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ebf16d44bd8adc84cb06974ae3b1546f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -316,7 +316,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 977f438c7b8d7f44695ced5f9f1e45f8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -445,7 +445,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030144826, y: -0.16359831}
+  m_Offset: {x: 0.0018110331, y: -0.16359831}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -456,7 +456,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0945472, y: 0.004479021}
+  m_Size: {x: 0.0921403, y: 0.004479021}
   m_EdgeRadius: 0
 --- !u!114 &9182222939448969818
 MonoBehaviour:
