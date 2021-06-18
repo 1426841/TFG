@@ -29,8 +29,9 @@ public class Character :  MonoBehaviour
     private int hearts;
     private Camera camera;
     private Vector3 respawnPosition;
-    
-    public void Start()
+    private Ability ability;
+
+    void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         action = NoMove;
@@ -40,6 +41,7 @@ public class Character :  MonoBehaviour
         ActivateHearts(true, true, true, false, false, false);
         camera = FindObjectOfType<Camera>();
         respawnPosition = new Vector3(InitialPositionX, InitialPositionY, InitialPositionZ);
+        ability = GetComponent<Ability>();
     }
 
     public void SetAction(string action)
@@ -82,6 +84,7 @@ public class Character :  MonoBehaviour
             case Respawn:
                 rigidBody.transform.position = respawnPosition;
                 hearts = MaxHearts;
+                ability.ResetAbility();
                 ActivateHearts(true, true, true, false, false, false);
                 break;
             case Dash:

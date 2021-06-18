@@ -73,7 +73,6 @@ public class CharacterControl : MonoBehaviour
         if (character.transform.position.y < RespawnPosition)
         {
             action = Character.Respawn;
-            ability.ResetAbility();
         }
 
         character.SetAction(action);

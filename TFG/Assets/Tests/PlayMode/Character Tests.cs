@@ -202,6 +202,21 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+            character.gameObject.AddComponent<Ability>();
+
+            GameObject abilityPoint1 = new GameObject();
+            GameObject abilityPoint2 = new GameObject();
+            GameObject habilityPoint3 = new GameObject();
+            GameObject noAbilityPoint1 = new GameObject();
+            GameObject noAbilityPoint2 = new GameObject();
+            GameObject noAbilityPoint3 = new GameObject();
+
+            character.gameObject.GetComponent<Ability>().abilityPoint1 = abilityPoint1;
+            character.gameObject.GetComponent<Ability>().abilityPoint2 = abilityPoint2;
+            character.gameObject.GetComponent<Ability>().abilityPoint3 = habilityPoint3;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint1 = noAbilityPoint1;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint2 = noAbilityPoint2;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint3 = noAbilityPoint3;
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
@@ -239,6 +254,21 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+            character.gameObject.AddComponent<Ability>();
+
+            GameObject abilityPoint1 = new GameObject();
+            GameObject abilityPoint2 = new GameObject();
+            GameObject habilityPoint3 = new GameObject();
+            GameObject noAbilityPoint1 = new GameObject();
+            GameObject noAbilityPoint2 = new GameObject();
+            GameObject noAbilityPoint3 = new GameObject();
+
+            character.gameObject.GetComponent<Ability>().abilityPoint1 = abilityPoint1;
+            character.gameObject.GetComponent<Ability>().abilityPoint2 = abilityPoint2;
+            character.gameObject.GetComponent<Ability>().abilityPoint3 = habilityPoint3;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint1 = noAbilityPoint1;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint2 = noAbilityPoint2;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint3 = noAbilityPoint3;
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
@@ -330,6 +360,21 @@ namespace Tests
             var character = gameObject.AddComponent<Character>();
             character.gameObject.AddComponent<Rigidbody2D>();
             character.gameObject.AddComponent<Animator>();
+            character.gameObject.AddComponent<Ability>();
+
+            GameObject abilityPoint1 = new GameObject();
+            GameObject abilityPoint2 = new GameObject();
+            GameObject habilityPoint3 = new GameObject();
+            GameObject noAbilityPoint1 = new GameObject();
+            GameObject noAbilityPoint2 = new GameObject();
+            GameObject noAbilityPoint3 = new GameObject();
+
+            character.gameObject.GetComponent<Ability>().abilityPoint1 = abilityPoint1;
+            character.gameObject.GetComponent<Ability>().abilityPoint2 = abilityPoint2;
+            character.gameObject.GetComponent<Ability>().abilityPoint3 = habilityPoint3;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint1 = noAbilityPoint1;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint2 = noAbilityPoint2;
+            character.gameObject.GetComponent<Ability>().noAbilityPoint3 = noAbilityPoint3;
 
             var cameraObject = new GameObject();
             var camera = cameraObject.AddComponent<Camera>();
