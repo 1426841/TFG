@@ -33,11 +33,13 @@ namespace Tests
             var continueGameButton = new GameObject();
             var exitGameButton = new GameObject();
             var rawImage = new GameObject();
+            var textControls = new GameObject();
             newGame.newGamebutton = newGameButton;
             newGame.continueGameButton = continueGameButton;
             newGame.exitGameButton = exitGameButton;
             newGame.rawImage = rawImage;
             newGame.rawImage.SetActive(false);
+            newGame.textControls = textControls;
 
             File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
             Assert.IsFalse(File.Exists(Application.dataPath + SaveSystem.SaveFilePath));
@@ -52,6 +54,7 @@ namespace Tests
             Assert.IsTrue(newGame.continueGameButton.activeSelf);
             Assert.IsTrue(newGame.exitGameButton.activeSelf);
             Assert.IsFalse(newGame.rawImage.activeSelf);
+            Assert.IsTrue(newGame.textControls.activeSelf);
 
             //Deletes old save
             newGame.CreateNewGame();
@@ -67,6 +70,7 @@ namespace Tests
             Assert.IsFalse(newGame.continueGameButton.activeSelf);
             Assert.IsFalse(newGame.exitGameButton.activeSelf);
             Assert.IsTrue(newGame.rawImage.activeSelf);
+            Assert.IsFalse(newGame.textControls.activeSelf);
 
             Assert.IsTrue(newGame.videoPlayer.isPlaying);
 
@@ -80,11 +84,13 @@ namespace Tests
             var continueGameButton2 = new GameObject();
             var exitGameButton2 = new GameObject();
             var rawImage2 = new GameObject();
+            var textControls2 = new GameObject();
             newGame.newGamebutton = newGameButton2;
             newGame.continueGameButton = continueGameButton2;
             newGame.exitGameButton = exitGameButton2;
             newGame.rawImage = rawImage2;
             newGame.rawImage.SetActive(false);
+            newGame.textControls = textControls2;
 
             videoPlayer = GameObject.Find("Video Player");
             newGame.videoPlayer = videoPlayer.GetComponent<VideoPlayer>();

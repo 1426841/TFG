@@ -1339,3 +1339,4 @@ MonoBehaviour:
   continueGameButton: {fileID: 1171220341}
   exitGameButton: {fileID: 610464630}
   newGamebutton: {fileID: 2096919568}
+  textControls: {fileID: 1094058188}

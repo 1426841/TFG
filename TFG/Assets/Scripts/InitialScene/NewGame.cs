@@ -10,15 +10,17 @@ public class NewGame : MonoBehaviour
     public GameObject continueGameButton;
     public GameObject exitGameButton;
     public GameObject newGamebutton;
+    public GameObject textControls;
 
     public void CreateNewGame()
     {
         File.Delete(Application.dataPath + SaveSystem.SaveFilePath);
 
-        // Disables buttons before playing video
+        // Disables buttons and text before playing video
         continueGameButton.SetActive(false);
         exitGameButton.SetActive(false);
         newGamebutton.SetActive(false);
+        textControls.SetActive(false);
 
         rawImage.SetActive(true);
         videoPlayer.Play();
