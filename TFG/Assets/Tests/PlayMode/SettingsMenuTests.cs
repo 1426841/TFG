@@ -35,6 +35,13 @@ namespace Tests
 
             //Exits level and loads Main scene
             Assert.AreEqual(SceneManager.GetActiveScene().name, "Main");
+
+            settingsMenu.ExitLevel();
+
+            yield return null;
+
+            //Exits Main and loads Initial scene
+            Assert.AreEqual(SceneManager.GetActiveScene().name, "Initial");
         }
     }
 }

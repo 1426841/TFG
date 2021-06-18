@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SettingsMenu : MonoBehaviour
 {
     private const string MainScene = "Main";
+    private const string InitialScene = "Initial";
 
     public GameObject settingsMenu;
     public GraphicsSettings graphicsSettings;
@@ -37,6 +38,13 @@ public class SettingsMenu : MonoBehaviour
 
     public void ExitLevel()
     {
-        SceneManager.LoadScene(MainScene);
+        if (SceneManager.GetActiveScene().name == MainScene)
+        {
+            SceneManager.LoadScene(InitialScene);
+        }
+        else
+        {
+            SceneManager.LoadScene(MainScene);
+        }
     }
 }
