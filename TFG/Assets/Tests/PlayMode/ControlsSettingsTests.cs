@@ -13,6 +13,7 @@ namespace Tests
         {
             var gameObject = new GameObject();
             var controlsSettings = gameObject.AddComponent<ControlsSettings>();
+            controlsSettings.gameObject.AddComponent<Controller>();
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
@@ -23,8 +24,10 @@ namespace Tests
             controlsSettings.movementsDropdown = dropdown;
 
             var controllerObject = new GameObject();
-            var controller = gameObject.AddComponent<Controller>();
+            var controller = controllerObject.AddComponent<Controller>();
             controlsSettings.controller = controller;
+
+            PlayerPrefs.DeleteAll();
 
             yield return null;
 
@@ -46,7 +49,7 @@ namespace Tests
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetJump(), "up");
             Assert.False(controlsSettings.repeatedKey.IsActive());
 
-            controlsSettings.gameObject.GetComponent<Controller>().SetDash("a");
+            controlsSettings.SetDashControl("a");
 
             controlsSettings.SetMovementControls(1);
 
@@ -56,7 +59,7 @@ namespace Tests
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetJump(), "up");
             Assert.True(controlsSettings.repeatedKey.IsActive());
 
-            controlsSettings.gameObject.GetComponent<Controller>().SetDash("q");
+            controlsSettings.SetDashControl("q");
 
             controlsSettings.SetMovementControls(1);
 
@@ -66,6 +69,7 @@ namespace Tests
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetJump(), "w");
             Assert.False(controlsSettings.repeatedKey.IsActive());
 
+            PlayerPrefs.DeleteAll();
         }
 
         [UnityTest]
@@ -73,6 +77,7 @@ namespace Tests
         {
             var gameObject = new GameObject();
             var controlsSettings = gameObject.AddComponent<ControlsSettings>();
+            controlsSettings.gameObject.AddComponent<Controller>();
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
@@ -83,8 +88,10 @@ namespace Tests
             controlsSettings.movementsDropdown = dropdown;
 
             var controllerObject = new GameObject();
-            var controller = gameObject.AddComponent<Controller>();
+            var controller = controllerObject.AddComponent<Controller>();
             controlsSettings.controller = controller;
+
+            PlayerPrefs.DeleteAll();
 
             yield return null;
 
@@ -113,12 +120,16 @@ namespace Tests
 
             //Can't change dash control because heal is using "e" key
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetDash(), "b");
+
+            PlayerPrefs.DeleteAll();
         }
 
+        [UnityTest]
         public IEnumerator SetHealControl()
         {
             var gameObject = new GameObject();
             var controlsSettings = gameObject.AddComponent<ControlsSettings>();
+            controlsSettings.gameObject.AddComponent<Controller>();
 
             Text text = controlsSettings.gameObject.AddComponent<Text>();
             controlsSettings.dashKey = text;
@@ -129,8 +140,10 @@ namespace Tests
             controlsSettings.movementsDropdown = dropdown;
 
             var controllerObject = new GameObject();
-            var controller = gameObject.AddComponent<Controller>();
+            var controller = controllerObject.AddComponent<Controller>();
             controlsSettings.controller = controller;
+
+            PlayerPrefs.DeleteAll();
 
             yield return null;
 
@@ -159,6 +172,8 @@ namespace Tests
 
             //Can't change heal control because dash is using "q" key
             Assert.AreEqual(controlsSettings.gameObject.GetComponent<Controller>().GetHeal(), "b");
+
+            PlayerPrefs.DeleteAll();
         }
     }
 }

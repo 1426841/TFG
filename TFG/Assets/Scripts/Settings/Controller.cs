@@ -2,12 +2,15 @@
 using UnityEngine;
 public class Controller : MonoBehaviour
 {
-    private string left = "left";
-    private string right = "right";
-    private string jump = "up";
-    private string dash = "q";
-    private string heal = "e";
-    private string settingsMenu = "m";
+    public const string Left = "left";
+    public const string Right = "right";
+    public const string Jump = "up";
+    public const string A = "a";
+    public const string W = "w";
+    public const string D = "d";
+    private const string Dash = "q";
+    private const string Heal = "e";
+    private const string SettingsMenu = "m";
     private Dictionary<string, string> usedKeys;
     private const string LeftKey = "right";
     private const string RightKey = "left";
@@ -30,31 +33,31 @@ public class Controller : MonoBehaviour
     //Getters
     public string GetLeft()
     {
-        return left;
+        return PlayerPrefs.GetString(LeftKey, defaultValue: Left);
     }
 
     public string GetRight()
     {
-        return right;
+        return PlayerPrefs.GetString(RightKey, defaultValue: Right);
     }
 
     public string GetJump()
     {
-        return jump;
+        return PlayerPrefs.GetString(JumpKey, defaultValue: Jump);
     }
     public string GetDash()
     {
-        return dash;
+        return PlayerPrefs.GetString(DashKey, defaultValue: Dash);
     }
 
     public string GetHeal()
     {
-        return heal;
+        return PlayerPrefs.GetString(HealKey, defaultValue: Heal);
     }
 
     public string GetSettingsMenu()
     {
-        return settingsMenu;
+        return PlayerPrefs.GetString(SettingsMenuKey, defaultValue: SettingsMenu);
     }
 
     public bool IsKeyRepeated(string key)
@@ -65,36 +68,36 @@ public class Controller : MonoBehaviour
     //Setters
     public void SetLeft(string left)
     {
-        this.left = left;
+        PlayerPrefs.SetString(LeftKey, left);
         usedKeys[LeftKey] = left;
     }
 
     public void SetRight(string right)
     {
-        this.right = right;
+        PlayerPrefs.SetString(RightKey, right);
         usedKeys[RightKey] = right;
     }
 
     public void SetJump(string jump)
     {
-        this.jump = jump;
+        PlayerPrefs.SetString(JumpKey, jump);
         usedKeys[JumpKey] = jump;
     }
     public void SetDash(string dash)
     {
-        this.dash = dash;
+        PlayerPrefs.SetString(DashKey, dash);
         usedKeys[DashKey] = dash;
     }
 
     public void SetHeal(string heal)
     {
-        this.heal = heal;
+        PlayerPrefs.SetString(HealKey, heal);
         usedKeys[HealKey] = heal;
     }
 
     public void SetSettingsMenu(string settingsMenu)
     {
-        this.settingsMenu = settingsMenu;
+        PlayerPrefs.SetString(SettingsMenuKey, settingsMenu);
         usedKeys[SettingsMenuKey] = settingsMenu;
     }
 }

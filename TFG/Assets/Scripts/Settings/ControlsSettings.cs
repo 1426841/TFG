@@ -3,12 +3,8 @@ using UnityEngine.UI;
 
 public class ControlsSettings : MonoBehaviour
 {
-    private const string ArrowLeftKey = "left";
-    private const string ArrowRightKey = "right";
-    private const string ArrowUpKey = "up";
-    private const string AKey = "a";
-    private const string DKey = "d";
-    private const string WKey = "w";
+    private const int ArrowDropdown = 0;
+    private const int WASDDropdown = 1;
 
     public Dropdown movementsDropdown;
     public Text dashKey;
@@ -21,6 +17,16 @@ public class ControlsSettings : MonoBehaviour
     {
         dashKey.text = controller.GetDash();
         healKey.text = controller.GetHeal();
+
+        if (controller.GetRight() == Controller.D)
+        {
+            movementsDropdown.value = WASDDropdown;
+        } else
+        {
+            movementsDropdown.value = ArrowDropdown;
+        }
+
+        repeatedKey.gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -29,9 +35,9 @@ public class ControlsSettings : MonoBehaviour
 
         // When WASD movement is selected but can't be used because at least one key is repeated, 
         // it selects the arrow keys movement from the dropdown
-        if (controller.GetRight() == ArrowRightKey)
+        if (controller.GetRight() == Controller.Right)
         {
-           movementsDropdown.value = 0;
+           movementsDropdown.value = ArrowDropdown;
         }
     }
 
@@ -39,16 +45,16 @@ public class ControlsSettings : MonoBehaviour
     {
         if(selectedMovement == 0)
         {
-            controller.SetRight(ArrowRightKey);
-            controller.SetLeft(ArrowLeftKey);
-            controller.SetJump(ArrowUpKey);
+            controller.SetRight(Controller.Right);
+            controller.SetLeft(Controller.Left);
+            controller.SetJump(Controller.Jump);
             repeatedKey.gameObject.SetActive(false);
 
-        } else if (!controller.IsKeyRepeated(DKey) && !controller.IsKeyRepeated(AKey) && !controller.IsKeyRepeated(WKey))
+        } else if (!controller.IsKeyRepeated(Controller.D) && !controller.IsKeyRepeated(Controller.A) && !controller.IsKeyRepeated(Controller.W))
         {
-            controller.SetRight(DKey);
-            controller.SetLeft(AKey);
-            controller.SetJump(WKey);
+            controller.SetRight(Controller.D);
+            controller.SetLeft(Controller.A);
+            controller.SetJump(Controller.W);
             repeatedKey.gameObject.SetActive(false);
         } else
         {
