@@ -36,6 +36,15 @@ public class GraphicsSettings : MonoBehaviour
         resolutionsDropdown.AddOptions(optionsDropdown);
         resolutionsDropdown.value = currentResolution;
         resolutionsDropdown.RefreshShownValue();
+
+        if (Screen.fullScreen)
+        {
+            toggle.isOn = true;
+        }
+        else
+        {
+            toggle.isOn = false;
+        }
     }
 
     public void Fullscreen(bool isFullscreen)
