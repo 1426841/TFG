@@ -331,6 +331,7 @@ namespace Tests
             Assert.False(character.noHeart3.activeSelf);
 
             character.Damage();
+            character.SetAction(Character.NoMove);
             yield return null;
 
             //2 hearts, 1 noHeart
