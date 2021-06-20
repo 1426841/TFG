@@ -112,10 +112,12 @@ public class Character :  MonoBehaviour
                 break;
         }
 
-        if (CharacterCollider.isColliding && action != Dash)
+        if (CharacterCollider.isColliding && action != Dash && action != Jump)
         {
+            // When the character is colliding and doesnt jump or dashes, disables jumping animation
             characterAnimator.SetBool(IsJumping, false);
         } else {
+            // When the character jumps or dashes, disables moving animation
             characterAnimator.SetBool(IsMoving, false);
         }
     }
