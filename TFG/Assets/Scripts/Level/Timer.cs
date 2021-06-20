@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public const string defaultTime = "0:0,0";
+    public const string DefaultTime = "0:0,0";
+    private const float MaxTime = 300;
     private Text timerText;
     private float initialTime;
     private float totalTime;
@@ -12,7 +13,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timerText = GetComponent<Text>();
-        timerText.text = defaultTime;
+        timerText.text = DefaultTime;
         initialTime = Time.time;
         totalTime = 0;
         isFinish = false;
@@ -35,7 +36,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (!isFinish)
+        if (!isFinish && totalTime < MaxTime)
         {
             totalTime = Time.time - initialTime;
 

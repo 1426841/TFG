@@ -101,7 +101,7 @@ public class SaveSystem : MonoBehaviour
 
     public string GetLevelTime(int level)
     {
-        string levelTime = Timer.defaultTime;
+        string levelTime = Timer.DefaultTime;
         if (File.Exists(Application.dataPath + SaveSystem.SaveFilePath))
         {
             SaveFile saveFile = Load();

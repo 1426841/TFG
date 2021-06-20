@@ -145,14 +145,14 @@ namespace Tests
             saveSystem.gameObject.AddComponent<Text>();
             saveSystem.gameObject.AddComponent<Collectables>();
 
-            Assert.AreEqual(saveSystem.GetLevelTime(1), Timer.defaultTime);
-            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.defaultTime);
+            Assert.AreEqual(saveSystem.GetLevelTime(1), Timer.DefaultTime);
+            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.DefaultTime);
 
             yield return new WaitForSeconds(0.2f);
             saveSystem.Save();
 
             Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,2");
-            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.defaultTime);
+            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.DefaultTime);
 
             saveSystem.gameObject.GetComponent<Timer>().ResetTime();
 
@@ -160,7 +160,7 @@ namespace Tests
             saveSystem.Save();
 
             Assert.AreEqual(saveSystem.GetLevelTime(1), "0:0,1");
-            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.defaultTime);
+            Assert.AreEqual(saveSystem.GetLevelTime(2), Timer.DefaultTime);
 
             SceneManager.LoadScene("Lvl2");
             yield return new WaitForSeconds(0.2f);
